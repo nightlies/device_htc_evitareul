@@ -1,0 +1,36 @@
+#
+# system.prop for evitareul
+#
+
+ro.sf.lcd_density=320
+
+# RIL
+rild.libpath=/system/lib/libril-qc-qmi-1.so
+rild.libargs=-e wwan0
+# RilLibPath for Ganlite by William_Lai
+rild.libpath.ganlite=/system/lib/librilswitch.so
+rilswitch.vendorlibpath=/system/lib/libhtc_ril.so
+rilswitch.ganlibpath=/system/lib/libganril.so
+ro.telephony.ril_class=HTCQualcommRIL
+ro.hwui.text_cache_width=2048
+ro.hwui.text_cache_height=256
+modem.fild.rootdir=/data/rfs
+modem.fild.blocksize=65528
+modem.fild.baudrate=3500000
+modem.fild.hif=0
+modem.fild.coredump=enabled
+modem.fild.coredumpdir=/data/rfs/data/debug
+modem.power.device=/sys/class/gpio/gpio32/value,0,1
+ro.ril.devicename=/dev/ttyACM1
+modem.powercontrol=disabled
+
+# wifi
+wifi.interface=wlan0
+
+# NFC
+debug.nfc.fw_download=true
+debug.nfc.fw_boot_download=true
+debug.nfc.se=true
+
+# UMS
+persist.sys.usb.config=mass_storage,adb
