@@ -14,6 +14,4 @@
 # limitations under the License.
 #
 
-add_lunch_combo full_eviatreul-eng
-add_lunch_combo full_evitareul-userdebug
 add_lunch_combo cm_evitareul-userdebug
