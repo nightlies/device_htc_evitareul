@@ -24,11 +24,40 @@
 # variant, so that it gets overwritten by the parent (which goes
 # against the traditional rules of inheritance).
 
-# inherit from tegra3-common
--include device/htc/tegra3-common/BoardConfigCommon.mk
+# Audio
+BOARD_USES_GENERIC_AUDIO := false
+BOARD_USES_ALSA_AUDIO := false
+COMMON_GLOBAL_CFLAGS += -DICS_AUDIO_BLOB
 
+#Camera
+USE_CAMERA_STUB := false
+CAMERA_USES_SURFACEFLINGER_CLIENT_STUB := true
+BOARD_HAVE_HTC_FFC := true
+
+# Flags
+TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
+
+# Board 
+TARGET_BOARD_PLATFORM := tegra
+TARGET_NO_BOOTLOADER := true
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_ARCH := arm
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_ARCH_VARIANT_CPU := cortex-a9
+TARGET_CPU_SMP := true
+ARCH_ARM_HAVE_TLS_REGISTER := true
+
+# Board nameing
 TARGET_NO_RADIOIMAGE := true
-TARGET_TEGRA_VERSION := T33
+TARGET_BOOTLOADER_BOARD_NAME := 
+TARGET_BOARD_PLATFORM := tegra
+TARGET_TEGRA_VERSION := t30
+
+# EGL settings
+USE_OPENGL_RENDERER := true
+BOARD_EGL_CFG := device/htc/enrc2b/configs/egl.cfg
 
 # Kernel
 TARGET_PROVIDES_INIT_TARGET_RC := true
