@@ -119,3 +119,14 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_MAX_PARTITIONS := 22
 BOARD_HAS_SDCARD_INTERNAL := true
+
+#Recovery
+
+# CWM Configurations UNCOMMENT TO USE CWM
+TARGET_RECOVERY_INITRC := device/htc/evitareul/recovery/init.rc
+BOARD_USES_MMCUTILS := true
+BOARD_HAS_NO_MISC_PARTITION := false
+BOARD_UMS_LUNFILE := "/sys/devices/platform/fsl-tegra-udc/gadget/lun0/file"
+TARGET_PREBUILT_RECOVERY_KERNEL := device/htc/evitareul/prebuilt/kernel
+BOARD_HAS_LARGE_FILESYSTEM := true
+BOARD_HAS_NO_SELECT_BUTTON := false

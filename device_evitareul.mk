@@ -279,6 +279,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/proprietary/lib/hw/camera.tegra.so:/system/lib/hw/camera.tegra.so \
     $(LOCAL_PATH)/proprietary/lib/hw/sensors.evitareul.so:/system/lib/hw/sensors.sensors.evitareul.so \
     $(LOCAL_PATH)/proprietary/lib/hw/nfc.evitareul.so:/system/lib/hw/nfc.evitareul.so \
+    $(LOCAL_PATH)/proprietary/lib/libdm-radioaccess.so:/system/lib/libdm-radioaccess.so \
+    $(LOCAL_PATH)/proprietary/lib/libdm-systemaccess.so:/system/lib/libdm-systemaccess.so \
     $(LOCAL_PATH)/proprietary/lib/libardrv_dynamic.so:/system/lib/libardrv_dynamic.so \
     $(LOCAL_PATH)/proprietary/lib/libcgdrv.so:/system/lib/libcgdrv.so \
     $(LOCAL_PATH)/proprietary/lib/libhtc_dis.so:/system/lib/libhtc_dis.so \
@@ -366,6 +368,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/proprietary/lib/libcapsjava.so:/system/lib/libcapsjava.so \
     $(LOCAL_PATH)/proprietary/lib/libbt-aptx-4.1.1.so:/system/lib/libbt-aptx-4.1.1.so \
     $(LOCAL_PATH)/proprietary/lib/libdumppcm.so:/system/lib/libdumppcm.so \
+    $(LOCAL_PATH)/proprietary/lib/libril-qc-qmi-1.so::/system/lib/libril-qc-qmi-1.so \
+    $(LOCAL_PATH)/proprietary/lib/libril-qcril-hook-oem.so::/system/lib/libril-qcril-hook-oem.so \
     $(LOCAL_PATH)/proprietary/lib/libril.so:/system/lib/libril.so \
     $(LOCAL_PATH)/proprietary/lib/libscaladoapi.so:/system/lib/libscaladoapi.so \
     $(LOCAL_PATH)/proprietary/lib/libscalado_htcalbum2.so:/system/lib/libscalado_htcalbum2.so \
