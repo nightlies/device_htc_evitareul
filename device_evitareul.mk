@@ -59,8 +59,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.usb.default \
-    libtinyalsa \
-    libaudioutils \
     libinvensense_mpl
 
 # iw
@@ -105,44 +103,49 @@ PRODUCT_PACKAGES += \
     sdcard \
     libmtp
 
+#Ril Testing
+PRODUCT_PACKAGES += \
+    libril \
+    rild
+
 
 # DSP
 PRODUCT_COPY_FILES += \
-    device/htc/evitareul//dsp/AIC3008_REG_DualMic.csv:system/etc/AIC3008_REG_DualMic.csv \
-    device/htc/evitareul//dsp/asound.conf:system/etc/asound.conf \
-    device/htc/evitareul//dsp/DSP_number.txt:system/etc/DSP_number.txt \
-    device/htc/evitareul//dsp/soundimage/board_version.txt:system/etc/soundimage/board_version.txt \
-    device/htc/evitareul//dsp/soundimage/CodecDSPID.txt:system/etc/soundimage/CodecDSPID.txt \
-    device/htc/evitareul//dsp/soundimage/CodecDSPID_XA.txt:system/etc/soundimage/CodecDSPID_XA.txt \
-    device/htc/evitareul//dsp/soundimage/Sound_AMR_Recording.txt:system/etc/soundimage/Sound_AMR_Recording.txt \
-    device/htc/evitareul//dsp/soundimage/Sound_BT_CarMode.txt:system/etc/soundimage/Sound_BT_CarMode.txt \
-    device/htc/evitareul//dsp/soundimage/Sound_FM_HP.txt:system/etc/soundimage/Sound_FM_HP.txt \
-    device/htc/evitareul//dsp/soundimage/Sound_FM_SPK.txt:system/etc/soundimage/Sound_FM_SPK.txt \
-    device/htc/evitareul//dsp/soundimage/Sound_Note_Recording.txt:system/etc/soundimage/Sound_Note_Recording.txt \
-    device/htc/evitareul//dsp/soundimage/Sound_Original_DOCK.txt:system/etc/soundimage/Sound_Original_DOCK.txt \
-    device/htc/evitareul//dsp/soundimage/Sound_Original_HP.txt:system/etc/soundimage/Sound_Original_HP.txt \
-    device/htc/evitareul//dsp/soundimage/Sound_Original_monocamcorder.txt:system/etc/soundimage/Sound_Original_monocamcorder.txt \
-    device/htc/evitareul//dsp/soundimage/Sound_Original_Recording.txt:system/etc/soundimage/Sound_Original_Recording.txt \
-    device/htc/evitareul//dsp/soundimage/Sound_Original_SPK_RING.txt:system/etc/soundimage/Sound_Original_SPK_RING.txt \
-    device/htc/evitareul//dsp/soundimage/Sound_Original_SPK.txt:system/etc/soundimage/Sound_Original_SPK.txt \
-    device/htc/evitareul//dsp/soundimage/Sound_Original_SPK_XA.txt:system/etc/soundimage/Sound_Original_SPK_XA.txt \
-    device/htc/evitareul//dsp/soundimage/Sound_Original.txt:system/etc/soundimage/Sound_Original.txt \
-    device/htc/evitareul//dsp/soundimage/Sound_Phone_Original_BT.txt:system/etc/soundimage/Sound_Phone_Original_BT.txt \
-    device/htc/evitareul//dsp/soundimage/Sound_Phone_Original_DOCK.txt:system/etc/soundimage/Sound_Phone_Original_DOCK.txt \
-    device/htc/evitareul//dsp/soundimage/Sound_Phone_Original_HPST.txt:system/etc/soundimage/Sound_Phone_Original_HPST.txt \
-    device/htc/evitareul//dsp/soundimage/Sound_Phone_Original_HP.txt:system/etc/soundimage/Sound_Phone_Original_HP.txt \
-    device/htc/evitareul//dsp/soundimage/Sound_Phone_Original_REC.txt:system/etc/soundimage/Sound_Phone_Original_REC.txt \
-    device/htc/evitareul//dsp/soundimage/Sound_Phone_Original_SPK.txt:system/etc/soundimage/Sound_Phone_Original_SPK.txt \
-    device/htc/evitareul//dsp/soundimage/Sound_Rec_Landscape.txt:system/etc/soundimage/Sound_Rec_Landscape.txt \
-    device/htc/evitareul//dsp/soundimage/Sound_Rec_Portrait.txt:system/etc/soundimage/Sound_Rec_Portrait.txt \
-    device/htc/evitareul//dsp/soundimage/Sound_SpeakerVR_Recording.txt:system/etc/soundimage/Sound_SpeakerVR_Recording.txt \
-    device/htc/evitareul//dsp/soundimage/Sound_Voice_Recording_AMR.txt:system/etc/soundimage/Sound_Voice_Recording_AMR.txt \
-    device/htc/evitareul//dsp/soundimage/srsfx_trumedia_51.cfg:system/etc/soundimage/srsfx_trumedia_51.cfg \
-    device/htc/evitareul//dsp/soundimage/srsfx_trumedia_movie.cfg:system/etc/soundimage/srsfx_trumedia_movie.cfg \
-    device/htc/evitareul//dsp/soundimage/srsfx_trumedia_music.cfg:system/etc/soundimage/srsfx_trumedia_music.cfg \
-    device/htc/evitareul//dsp/soundimage/srsfx_trumedia_voice.cfg:system/etc/soundimage/srsfx_trumedia_voice.cfg \
-    device/htc/evitareul//dsp/soundimage/srs_geq10.cfg:system/etc/soundimage/srs_geq10.cfg \
-    device/htc/evitareul//dsp/soundimage/srs_global.cfg:system/etc/soundimage/srs_global.cfg
+    device/htc/evitareul/dsp/AIC3008_REG_DualMic.csv:system/etc/AIC3008_REG_DualMic.csv \
+    device/htc/evitareul/dsp/asound.conf:system/etc/asound.conf \
+    device/htc/evitareul/dsp/DSP_number.txt:system/etc/DSP_number.txt \
+    device/htc/evitareul/dsp/soundimage/board_version.txt:system/etc/soundimage/board_version.txt \
+    device/htc/evitareul/dsp/soundimage/CodecDSPID.txt:system/etc/soundimage/CodecDSPID.txt \
+    device/htc/evitareul/dsp/soundimage/CodecDSPID_XA.txt:system/etc/soundimage/CodecDSPID_XA.txt \
+    device/htc/evitareul/dsp/soundimage/Sound_AMR_Recording.txt:system/etc/soundimage/Sound_AMR_Recording.txt \
+    device/htc/evitareul/dsp/soundimage/Sound_BT_CarMode.txt:system/etc/soundimage/Sound_BT_CarMode.txt \
+    device/htc/evitareul/dsp/soundimage/Sound_FM_HP.txt:system/etc/soundimage/Sound_FM_HP.txt \
+    device/htc/evitareul/dsp/soundimage/Sound_FM_SPK.txt:system/etc/soundimage/Sound_FM_SPK.txt \
+    device/htc/evitareul/dsp/soundimage/Sound_Note_Recording.txt:system/etc/soundimage/Sound_Note_Recording.txt \
+    device/htc/evitareul/dsp/soundimage/Sound_Original_DOCK.txt:system/etc/soundimage/Sound_Original_DOCK.txt \
+    device/htc/evitareul/dsp/soundimage/Sound_Original_HP.txt:system/etc/soundimage/Sound_Original_HP.txt \
+    device/htc/evitareul/dsp/soundimage/Sound_Original_monocamcorder.txt:system/etc/soundimage/Sound_Original_monocamcorder.txt \
+    device/htc/evitareul/dsp/soundimage/Sound_Original_Recording.txt:system/etc/soundimage/Sound_Original_Recording.txt \
+    device/htc/evitareul/dsp/soundimage/Sound_Original_SPK_RING.txt:system/etc/soundimage/Sound_Original_SPK_RING.txt \
+    device/htc/evitareul/dsp/soundimage/Sound_Original_SPK.txt:system/etc/soundimage/Sound_Original_SPK.txt \
+    device/htc/evitareul/dsp/soundimage/Sound_Original_SPK_XA.txt:system/etc/soundimage/Sound_Original_SPK_XA.txt \
+    device/htc/evitareul/dsp/soundimage/Sound_Original.txt:system/etc/soundimage/Sound_Original.txt \
+    device/htc/evitareul/dsp/soundimage/Sound_Phone_Original_BT.txt:system/etc/soundimage/Sound_Phone_Original_BT.txt \
+    device/htc/evitareul/dsp/soundimage/Sound_Phone_Original_DOCK.txt:system/etc/soundimage/Sound_Phone_Original_DOCK.txt \
+    device/htc/evitareul/dsp/soundimage/Sound_Phone_Original_HPST.txt:system/etc/soundimage/Sound_Phone_Original_HPST.txt \
+    device/htc/evitareul/dsp/soundimage/Sound_Phone_Original_HP.txt:system/etc/soundimage/Sound_Phone_Original_HP.txt \
+    device/htc/evitareul/dsp/soundimage/Sound_Phone_Original_REC.txt:system/etc/soundimage/Sound_Phone_Original_REC.txt \
+    device/htc/evitareul/dsp/soundimage/Sound_Phone_Original_SPK.txt:system/etc/soundimage/Sound_Phone_Original_SPK.txt \
+    device/htc/evitareul/dsp/soundimage/Sound_Rec_Landscape.txt:system/etc/soundimage/Sound_Rec_Landscape.txt \
+    device/htc/evitareul/dsp/soundimage/Sound_Rec_Portrait.txt:system/etc/soundimage/Sound_Rec_Portrait.txt \
+    device/htc/evitareul/dsp/soundimage/Sound_SpeakerVR_Recording.txt:system/etc/soundimage/Sound_SpeakerVR_Recording.txt \
+    device/htc/evitareul/dsp/soundimage/Sound_Voice_Recording_AMR.txt:system/etc/soundimage/Sound_Voice_Recording_AMR.txt \
+    device/htc/evitareul/dsp/soundimage/srsfx_trumedia_51.cfg:system/etc/soundimage/srsfx_trumedia_51.cfg \
+    device/htc/evitareul/dsp/soundimage/srsfx_trumedia_movie.cfg:system/etc/soundimage/srsfx_trumedia_movie.cfg \
+    device/htc/evitareul/dsp/soundimage/srsfx_trumedia_music.cfg:system/etc/soundimage/srsfx_trumedia_music.cfg \
+    device/htc/evitareul/dsp/soundimage/srsfx_trumedia_voice.cfg:system/etc/soundimage/srsfx_trumedia_voice.cfg \
+    device/htc/evitareul/dsp/soundimage/srs_geq10.cfg:system/etc/soundimage/srs_geq10.cfg \
+    device/htc/evitareul/dsp/soundimage/srs_global.cfg:system/etc/soundimage/srs_global.cfg
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
@@ -205,7 +208,7 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 PRODUCT_LOCALES += en_GB xhdpi
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-$(call inherit-product-if-exists, vendor/htc/encr2b/enrc2b-vendor.mk)
+$(call inherit-product-if-exists, vendor/htc/encr2b/evitareul-vendor.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 # Discard inherited values and use our own instead.
@@ -241,7 +244,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/proprietary/bin/atpipe_plain:/system/bin/atpipe_plain \
     $(LOCAL_PATH)/proprietary/bin/cand:/system/bin/cand \
-    $(LOCAL_PATH)/proprietary/bin/rild:/system/bin/rild \
     $(LOCAL_PATH)/proprietary/bin/tf_daemon:/system/bin/tf_daemon \
     $(LOCAL_PATH)/proprietary/bin/hdmid:/system/bin/hdmid \
     $(LOCAL_PATH)/proprietary/bin/htcbatt:/system/bin/htcbatt \
@@ -370,11 +372,24 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/proprietary/lib/libdumppcm.so:/system/lib/libdumppcm.so \
     $(LOCAL_PATH)/proprietary/lib/libril-qc-qmi-1.so::/system/lib/libril-qc-qmi-1.so \
     $(LOCAL_PATH)/proprietary/lib/libril-qcril-hook-oem.so::/system/lib/libril-qcril-hook-oem.so \
-    $(LOCAL_PATH)/proprietary/lib/libril.so:/system/lib/libril.so \
     $(LOCAL_PATH)/proprietary/lib/libscaladoapi.so:/system/lib/libscaladoapi.so \
     $(LOCAL_PATH)/proprietary/lib/libscalado_htcalbum2.so:/system/lib/libscalado_htcalbum2.so \
     $(LOCAL_PATH)/proprietary/lib/libscaladoutil.so:/system/lib/libscaladoutil.so \
-    $(LOCAL_PATH)/proprietary/lib/libhtc-opt2.so:/system/lib/libhtc-opt2.so
+    $(LOCAL_PATH)/proprietary/lib/libhtc-opt2.so:/system/lib/libhtc-opt2.so 
+
+# IDC
+PRODUCT_COPY_FILES += \
+    device/htc/evitareul/proprietary/usr/idc/atmel-maxtouch.idc:system/usr/idc/atmel-maxtouch.idc \
+    device/htc/evitareul/proprietary/usr/idc/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc \
+    device/htc/evitareul/proprietary/usr/idc/tv-touchscreen.idc:system/usr/idc/tv-touchscreen.idc
+
+# Keylayouts & Keychars
+PRODUCT_COPY_FILES += \
+    device/htc/evitareul/proprietary/usr/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
+    device/htc/evitareul/proprietary/usr/keylayout/projector-Keypad.kl:system/usr/keylayout/projector-Keypad.kl \
+    device/htc/evitareul/proprietary/usr/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
+    device/htc/evitareul/proprietary/usr/keylayout/tegra-kbc.kl:system/usr/keylayout/tegra-kbc.kl \
+    device/htc/evitareul/proprietary/usr/keychars/qwerty.kcm:system/usr/keychars/qwerty.kcm
 
 
 # Firmware
@@ -391,46 +406,25 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/proprietary/etc/firmware/nvavp_vid_ucode_alt.bin:system/etc/firmware/nvavp_vid_ucode_alt.bin \
     $(LOCAL_PATH)/proprietary/vendor/firmware/libpn544_fw.so:system/vendor/firmware/libpn544_fw.so
 
-# Sound
-#PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/dsp/soundimage/CodecDSPID.txt:system/etc/soundimage/CodecDSPID.txt \
-    $(LOCAL_PATH)/dsp/soundimage/CodecDSPID_XA.txt:system/etc/soundimage/CodecDSPID_XA.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_BT_CarMode.txt:system/etc/soundimage/Sound_BT_CarMode.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_FM_HP.txt:system/etc/soundimage/Sound_FM_HP.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_FM_HP_XA.txt:system/etc/soundimage/Sound_FM_HP_XA.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_FM_SPK.txt:system/etc/soundimage/Sound_FM_SPK.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_FM_SPK_XA.txt:system/etc/soundimage/Sound_FM_SPK_XA.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Note_Recording.txt:system/etc/soundimage/Sound_Note_Recording.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Original_DOCK.txt:system/etc/soundimage/Sound_Original_DOCK.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Original_HP.txt:system/etc/soundimage/Sound_Original_HP.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Original_HP_XA.txt:system/etc/soundimage/Sound_Original_HP_XA.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Original_SPK_RING.txt:system/etc/soundimage/Sound_Original_SPK_RING.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Original_SPK_RING_XA.txt:system/etc/soundimage/Sound_Original_SPK_RING_XA.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Original_SPK.txt:system/etc/soundimage/Sound_Original_SPK.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Original_SPK_XA.txt:system/etc/soundimage/Sound_Original_SPK_XA.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Original.txt:system/etc/soundimage/Sound_Original.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Phone_Original_BT.txt:system/etc/soundimage/Sound_Phone_Original_BT.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Phone_Original_DOCK.txt:system/etc/soundimage/Sound_Phone_Original_DOCK.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Phone_Original_HAC.txt:system/etc/soundimage/Sound_Phone_Original_HAC.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Phone_Original_HP.txt:system/etc/soundimage/Sound_Phone_Original_HP.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Phone_Original_REC.txt:system/etc/soundimage/Sound_Phone_Original_REC.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Phone_Original_SPK.txt:system/etc/soundimage/Sound_Phone_Original_SPK.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Phone_Original_SPK_XA.txt:system/etc/soundimage/Sound_Phone_Original_SPK_XA.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Phone_Original_TTY.txt:system/etc/soundimage/Sound_Phone_Original_TTY.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Rec_Landscape.txt:system/etc/soundimage/Sound_Rec_Landscape.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Rec_Portrait.txt:system/etc/soundimage/Sound_Rec_Portrait.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_SpeakerVR_Recording.txt:system/etc/soundimage/Sound_SpeakerVR_Recording.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Voice_Recording_AMR.txt:system/etc/soundimage/Sound_Voice_Recording_AMR.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Voip_Original_BT.txt:system/etc/soundimage/Sound_Voip_Original_BT.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Voip_Original_BT_AEC.txt:system/etc/soundimage/Sound_Voip_Original_BT_AEC.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Voip_Original_HP.txt:system/etc/soundimage/Sound_Voip_Original_HP.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Voip_Original_HP_AEC.txt:system/etc/soundimage/Sound_Voip_Original_HP_AEC.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Voip_Original_REC.txt:system/etc/soundimage/Sound_Voip_Original_REC.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Voip_Original_REC_AEC.txt:system/etc/soundimage/Sound_Voip_Original_REC_AEC.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Voip_Original_SPK.txt:system/etc/soundimage/Sound_Voip_Original_SPK.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Voip_Original_SPK_XA.txt:system/etc/soundimage/Sound_Voip_Original_SPK_XA.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Voip_Original_SPK_AEC.txt:system/etc/soundimage/Sound_Voip_Original_SPK_AEC.txt \
-    $(LOCAL_PATH)/dsp/soundimage/Sound_Voip_Original_SPK_AEC_XA.txt:system/etc/soundimage/Sound_Voip_Original_SPK_AEC_XA.txt
+  # Prebuilt Alsa configs
+PRODUCT_COPY_FILES += \
+    device/htc/evitareul/proprietary/usr/share/alsa/alsa.conf:system/usr/share/alsa/alsa.conf \
+    device/htc/evitareul/proprietary/usr/share/alsa/cards/aliases.conf:system/usr/share/alsa/cards/aliases.conf \
+    device/htc/evitareul/proprietary/usr/share/alsa/pcm/center_lfe.conf:system/usr/share/alsa/pcm/center_lfe.conf \
+    device/htc/evitareul/proprietary/usr/share/alsa/pcm/default.conf:system/usr/share/alsa/pcm/default.conf \
+    device/htc/evitareul/proprietary/usr/share/alsa/pcm/dmix.conf:system/usr/share/alsa/pcm/dmix.conf \
+    device/htc/evitareul/proprietary/usr/share/alsa/pcm/dpl.conf:system/usr/share/alsa/pcm/dpl.conf \
+    device/htc/evitareul/proprietary/usr/share/alsa/pcm/dsnoop.conf:system/usr/share/alsa/pcm/dsnoop.conf \
+    device/htc/evitareul/proprietary/usr/share/alsa/pcm/front.conf:system/usr/share/alsa/pcm/front.conf \
+    device/htc/evitareul/proprietary/usr/share/alsa/pcm/iec958.conf:system/usr/share/alsa/pcm/iec958.conf \
+    device/htc/evitareul/proprietary/usr/share/alsa/pcm/modem.conf:system/usr/share/alsa/pcm/modem.conf \
+    device/htc/evitareul/proprietary/usr/share/alsa/pcm/rear.conf:system/usr/share/alsa/pcm/rear.conf \
+    device/htc/evitareul/proprietary/usr/share/alsa/pcm/side.conf:system/usr/share/alsa/pcm/side.conf \
+    device/htc/evitareul/proprietary//usr/share/alsa/pcm/surround40.conf:system/usr/share/alsa/pcm/surround40.conf \
+    device/htc/evitareul/proprietary/usr/share/alsa/pcm/surround41.conf:system/usr/share/alsa/pcm/surround41.conf \
+    device/htc/evitareul/proprietary/usr/share/alsa/pcm/surround50.conf:system/usr/share/alsa/pcm/surround50.conf \
+    device/htc/evitareul/proprietary/usr/share/alsa/pcm/surround51.conf:system/usr/share/alsa/pcm/surround51.conf \
+    device/htc/evitareul/proprietary/usr/share/alsa/pcm/surround71.conf:system/usr/share/alsa/pcm/surround71.conf
 
 # audio tfa
 PRODUCT_COPY_FILES += \
@@ -465,13 +459,16 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/proprietary/etc/tfa/voice.speaker:system/etc/tfa/voice.speaker
 
 # GPS
-#PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/proprietary/etc/gps/RXN/license.key:/system/etc/gps/RXN/license.key \
-    $(LOCAL_PATH)/proprietary/etc/gps/RXN/MSLConfig.txt:/system/etc/gps/RXN/MSLConfig.txt \
-    $(LOCAL_PATH)/proprietary/etc/gps/RXN/security.key:/system/etc/gps/RXN/security.key \
-    $(LOCAL_PATH)/proprietary/etc/gps/agps.truststore:/system/etc/gps/agps.truststore \
-    $(LOCAL_PATH)/proprietary/etc/gps/agps.truststore_lab:/system/etc/gps/agps.truststore_lab \
-    $(LOCAL_PATH)/proprietary/etc/gps/tigpsrouter:/system/etc/gps/tigpsrouter
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/proprietary/etc/gps.conf:/system/etc/gps.conf \
+    $(LOCAL_PATH)/proprietary/etc/gps.conf_default:/system/etc/gps.conf_default \
+    $(LOCAL_PATH)/proprietary/lib/libloc_adapter.so:/system/lib/libloc_adapter.so \
+    $(LOCAL_PATH)/proprietary/lib/libloc_api_v02.so:/system/lib/libloc_api_v02.so \
+    $(LOCAL_PATH)/proprietary/lib/libloc_eng.so:/system/lib/libloc_eng.so \
+    $(LOCAL_PATH)/proprietary/lib/libloc_ext.so:/system/lib/libloc_ext.so \
+    $(LOCAL_PATH)/proprietary/lib/libgps.utils.so:/system/lib/libgps.utils.so
+
+
 
 # RIL
 #PRODUCT_COPY_FILES += \
