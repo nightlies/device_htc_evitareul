@@ -162,13 +162,13 @@ PRODUCT_COPY_FILES += \
 # Any prebuilt kernel modules
 # Lloir: MUST BE PIZZA MODULES!!!!
 PRODUCT_COPY_FILES += \
-        device/htc/enrc2b/modules/baseband-xmm-power2.ko:system/lib/modules/baseband-xmm-power2.ko \
-        device/htc/enrc2b/modules/baseband_usb_chr.ko:system/lib/modules/baseband_usb_chr.ko \
-        device/htc/enrc2b/modules/bcmdhd.ko:system/lib/modules/bcmdhd.ko \
-        device/htc/enrc2b/modules/cdc-acm.ko:system/lib/modules/cdc-acm.ko \
-        device/htc/enrc2b/modules/raw_ip_net.ko:system/lib/modules/raw_ip_net.ko \
-        device/htc/enrc2b/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
-        device/htc/enrc2b/modules/tcrypt.ko:system/lib/modules/tcrypt.ko
+        device/htc/evitareul/modules/baseband-xmm-power2.ko:system/lib/modules/baseband-xmm-power2.ko \
+        device/htc/evitareul/modules/baseband_usb_chr.ko:system/lib/modules/baseband_usb_chr.ko \
+        device/htc/evitareul/modules/bcmdhd.ko:system/lib/modules/bcmdhd.ko \
+        device/htc/evitareul/modules/cdc-acm.ko:system/lib/modules/cdc-acm.ko \
+        device/htc/evitareul/modules/raw_ip_net.ko:system/lib/modules/raw_ip_net.ko \
+        device/htc/evitareul/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
+        device/htc/evitareul/modules/tcrypt.ko:system/lib/modules/tcrypt.ko
 
 # Vold
 PRODUCT_COPY_FILES += \
@@ -271,19 +271,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/proprietary/bin/DxDrmServerIpc:/system/bin/DxDrmServerIpc \
     $(LOCAL_PATH)/proprietary/bin/efsks:/system/bin/efsks \
     $(LOCAL_PATH)/proprietary/bin/nvtest:/system/bin/nvtest \
+    $(LOCAL_PATH)/proprietary/bin/calibration:/system/bin/calibration \
+    $(LOCAL_PATH)/proprietary/bin/calibration.gpio4:/system/bin/calibration.gpio4 \
     $(LOCAL_PATH)/proprietary/bin/poweron_modem_hboot.sh:/system/bin/poweron_modem_hboot.sh \
     $(LOCAL_PATH)/proprietary/bin/qcks:/system/bin/qcks
-    $(LOCAL_PATH)/proprietary/bin/poweron_modem_hboot.sh:/system/bin/poweron_modem_hboot.sh \
-    $(LOCAL_PATH)/proprietary/bin/poweroff_modem.sh:/system/bin/poweroff_modem.sh \
-    $(LOCAL_PATH)/proprietary/bin/logcat2:/system/bin/logcat2 \
-    $(LOCAL_PATH)/proprietary/bin/hdcp_test:/system/bin/hdcp_test \
-    $(LOCAL_PATH)/proprietary/bin/nvtest:/system/bin/nvtest \
-    $(LOCAL_PATH)/proprietary/etc/media_codecs.xml:/system/etc/media_codecs.xml \
-    $(LOCAL_PATH)/proprietary/etc/nfcee_access.xml:/system/etc/nfcee_access.xml \
-    $(LOCAL_PATH)/proprietary/bin/DxDrmServerIpc:/system/bin/DxDrmServerIpc \
-    $(LOCAL_PATH)/proprietary/bin/htcfs:/system/bin/htcfs \
-    $(LOCAL_PATH)/proprietary/etc/voicemail-conf.xml:/system/etc/voicemail-conf.xml
-
+  
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/proprietary/lib/egl/libEGL_perfhud.so:/system/lib/egl/libEGL_perfhud.so \
     $(LOCAL_PATH)/proprietary/lib/egl/libEGL_tegra.so:/system/lib/egl/libEGL_tegra.so \

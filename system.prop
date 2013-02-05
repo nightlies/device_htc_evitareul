@@ -5,12 +5,15 @@
 ro.sf.lcd_density=320
 
 rild.libpath=/system/lib/libril-qc-qmi-1.so
+# RilLibPath for Ganlite by William_Lai
+rild.libpath.ganlite=/system/lib/librilswitch.so
+rilswitch.vendorlibpath=/system/lib/libhtc_ril.so
+rilswitch.ganlibpath=/system/lib/libganril.so
 
 rild.libargs=-e wwan0
 ro.sf.lcd_density=320
 ro.hwui.text_cache_width=2048
 ro.hwui.text_cache_height=256
-windowsmgr.max_events_per_sec = 300
 
 # Default network type.
 # 0 => WCDMA preferred.
@@ -57,6 +60,7 @@ modem.fild.coredumpdir=/data/rfs/data/debug
 modem.power.device=/sys/class/gpio/gpio32/value,0,1
 ro.ril.devicename=/dev/ttyACM1
 modem.powercontrol=disabled
+
 
 # -----------------------------
 # speaker volume is from 20 to 31
