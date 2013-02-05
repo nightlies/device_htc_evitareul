@@ -20,7 +20,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/htc/evitareul/overlay
 
-
 # Lights
 PRODUCT_PACKAGES += \
     lights.tegra
@@ -59,6 +58,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.usb.default \
+    libtinyalsa \
+    libaudioutils \
     libinvensense_mpl
 
 # iw
@@ -104,7 +105,7 @@ PRODUCT_PACKAGES += \
     libmtp
 
 #Ril Testing
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
     libril \
     rild
 
@@ -158,6 +159,17 @@ PRODUCT_COPY_FILES += \
     device/htc/evitareul/ramdisk/init.trace.rc:root/init.trace.rc \
     device/htc/evitareul/ramdisk/ueventd.evitareul.rc:root/ueventd.evitareul.rc
 
+# Any prebuilt kernel modules
+# Lloir: MUST BE PIZZA MODULES!!!!
+PRODUCT_COPY_FILES += \
+        device/htc/enrc2b/modules/baseband-xmm-power2.ko:system/lib/modules/baseband-xmm-power2.ko \
+        device/htc/enrc2b/modules/baseband_usb_chr.ko:system/lib/modules/baseband_usb_chr.ko \
+        device/htc/enrc2b/modules/bcmdhd.ko:system/lib/modules/bcmdhd.ko \
+        device/htc/enrc2b/modules/cdc-acm.ko:system/lib/modules/cdc-acm.ko \
+        device/htc/enrc2b/modules/raw_ip_net.ko:system/lib/modules/raw_ip_net.ko \
+        device/htc/enrc2b/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
+        device/htc/enrc2b/modules/tcrypt.ko:system/lib/modules/tcrypt.ko
+
 # Vold
 PRODUCT_COPY_FILES += \
     device/htc/evitareul/vold.fstab:system/etc/vold.fstab
@@ -176,13 +188,6 @@ PRODUCT_COPY_FILES += \
     device/htc/evitareul/firmware/nvavp_vid_ucode_alt.bin:system/etc/firmware/nvavp_vid_ucode_alt.bin \
     device/htc/evitareul/firmware/nvavp_vid_ucode.bin:system/etc/firmware/nvavp_vid_ucode.bin
 
-# Kernel
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-PRODUCT_COPY_FILES += $(shell \
-    find device/htc/ruby/modules -name '*.ko' \
-    | sed -r 's/^\/?(.*\/)([^/ ]+)$$/\1\2:system\/lib\/modules\/\2/' \
-    | tr '\n' ' ')
-endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
         ro.com.google.locationfeatures=1 \
@@ -243,6 +248,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/proprietary/bin/atpipe_plain:/system/bin/atpipe_plain \
+    $(LOCAL_PATH)/proprietary/bin/tf_daemon:/system/bin/tf_daemon \
     $(LOCAL_PATH)/proprietary/bin/cand:/system/bin/cand \
     $(LOCAL_PATH)/proprietary/bin/tf_daemon:/system/bin/tf_daemon \
     $(LOCAL_PATH)/proprietary/bin/hdmid:/system/bin/hdmid \
@@ -251,6 +257,22 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/proprietary/bin/make_sec_bin:/system/bin/make_sec_bin \
     $(LOCAL_PATH)/proprietary/bin/mknod:/system/bin/mknod \
     $(LOCAL_PATH)/proprietary/bin/poweron_modem_fls.sh:/system/bin/poweron_modem_fls.sh \
+    $(LOCAL_PATH)/proprietary/bin/poweroff_modem.sh:/system/bin/poweroff_modem.sh \
+    $(LOCAL_PATH)/proprietary/bin/logcat2:/system/bin/logcat2 \
+    $(LOCAL_PATH)/proprietary/etc/media_codecs.xml:/system/etc/media_codecs.xml \
+    $(LOCAL_PATH)/proprietary/etc/nfcee_access.xml:/system/etc/nfcee_access.xml \
+    $(LOCAL_PATH)/proprietary/bin/htcfs:/system/bin/htcfs \
+    $(LOCAL_PATH)/proprietary/etc/voicemail-conf.xml:/system/etc/voicemail-conf.xml \
+    $(LOCAL_PATH)/proprietary/bin/IMCdownload:/system/bin/IMCdownload \
+    $(LOCAL_PATH)/proprietary/bin/InjectionTool:/system/bin/InjectionTool \
+    $(LOCAL_PATH)/proprietary/bin/ks:/system/bin/ks \
+    $(LOCAL_PATH)/proprietary/bin/hdmid:/system/bin/hdmid \
+    $(LOCAL_PATH)/proprietary/bin/cand:/system/bin/cand \
+    $(LOCAL_PATH)/proprietary/bin/DxDrmServerIpc:/system/bin/DxDrmServerIpc \
+    $(LOCAL_PATH)/proprietary/bin/efsks:/system/bin/efsks \
+    $(LOCAL_PATH)/proprietary/bin/nvtest:/system/bin/nvtest \
+    $(LOCAL_PATH)/proprietary/bin/poweron_modem_hboot.sh:/system/bin/poweron_modem_hboot.sh \
+    $(LOCAL_PATH)/proprietary/bin/qcks:/system/bin/qcks
     $(LOCAL_PATH)/proprietary/bin/poweron_modem_hboot.sh:/system/bin/poweron_modem_hboot.sh \
     $(LOCAL_PATH)/proprietary/bin/poweroff_modem.sh:/system/bin/poweroff_modem.sh \
     $(LOCAL_PATH)/proprietary/bin/logcat2:/system/bin/logcat2 \
@@ -375,7 +397,26 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/proprietary/lib/libscaladoapi.so:/system/lib/libscaladoapi.so \
     $(LOCAL_PATH)/proprietary/lib/libscalado_htcalbum2.so:/system/lib/libscalado_htcalbum2.so \
     $(LOCAL_PATH)/proprietary/lib/libscaladoutil.so:/system/lib/libscaladoutil.so \
+    $(LOCAL_PATH)/proprietary/lib/libhtc-opt2.so:/system/lib/libhtc-opt2.so \
+    $(LOCAL_PATH)/proprietary/lib/libdiag.so:/system/lib/libdiag.so \
+    $(LOCAL_PATH)/proprietary/lib/libdsi_netctrl.so:/system/lib/libdsi_netctrl.so \
+    $(LOCAL_PATH)/proprietary/lib/libdsutils.so:/system/lib/libdsutils.so \
+    $(LOCAL_PATH)/proprietary/lib/libidl.so:/system/lib/libidl.so \
+    $(LOCAL_PATH)/proprietary/lib/libnetmgr.so:/system/lib/libnetmgr.so \
+    $(LOCAL_PATH)/proprietary/lib/libqcci_legacy.so:/system/lib/libqcci_legacy.so \
+    $(LOCAL_PATH)/proprietary/lib/libqdi.so:/system/lib/libqdi.so \
+    $(LOCAL_PATH)/proprietary/lib/libqdp.so:/system/lib/libqdp.so \
+    $(LOCAL_PATH)/proprietary/lib/libqmi.so:/system/lib/libqmi.so \
+    $(LOCAL_PATH)/proprietary/lib/libqmi_client_qmux.so:/system/lib/libqmi_client_qmux.so \
+    $(LOCAL_PATH)/proprietary/lib/libqmi_cci.so:/system/lib/libqmi_cci.so \
+    $(LOCAL_PATH)/proprietary/lib/libqmi_client_qmux.so:/system/lib/libqmi_client_cci.so \
+    $(LOCAL_PATH)/proprietary/lib/libqmi_common_so.so:/system/lib/libqmi_common_so.so \
+    $(LOCAL_PATH)/proprietary/lib/libqmi_csi.so:/system/lib/libqmi_csi.so \
+    $(LOCAL_PATH)/proprietary/lib/libqmi_csvt_srvc.so:/system/lib/libqmi_csvt_srvc.so \
+    $(LOCAL_PATH)/proprietary/lib/libqmi_encdec.so:/system/lib/libqmi_encdec.so \
+    $(LOCAL_PATH)/proprietary/lib/libqmiservices.so:/system/lib/libqmiservices.so \
     $(LOCAL_PATH)/proprietary/lib/libhtc-opt2.so:/system/lib/libhtc-opt2.so 
+
 
 # IDC
 PRODUCT_COPY_FILES += \
