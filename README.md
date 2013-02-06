@@ -16,3 +16,11 @@ Known issues:
 * Bluetooth
 
 (thanks for the readme file sportstar)
+
+
+
+ASK PERMISSIONS BEFORE USING THIS SOURCE
+
+Lots of love and hate
+
+-Lloir
