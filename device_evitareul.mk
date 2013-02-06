@@ -503,8 +503,11 @@ PRODUCT_COPY_FILES += \
 
 
 
-# RIL
-#PRODUCT_COPY_FILES += \
+# TESTING
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/proprietary/lib/libdsprofile.so:/system/lib/libdsprofile.so \
+    $(LOCAL_PATH)/proprietary/lib/libdss.so:/system/lib/libdss.so \
+    $(LOCAL_PATH)/proprietary/lib/libdsucsd.so:/system/lib/libdsucsd.so
 
     
 ###VENDOR END###
