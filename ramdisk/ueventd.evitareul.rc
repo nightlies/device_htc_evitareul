@@ -60,3 +60,6 @@
 
 # autobot
 /dev/ttyHSUSB3                                 0660    autobot_access  autobot_access
+
+# wifi
+/dev/rfkill             0660   root         wifi

@@ -1,3 +1,5 @@
+import init.evitareul.usb.rc
+
 on early-init
     mount debugfs debugfs /sys/kernel/debug
     write /sys/class/firmware/timeout 5
@@ -10,65 +12,58 @@ on early-init
     symlink /storage/sdcard0 /mnt/sdcard
     mkdir /mnt/usb 0000 system system
 
+		#Sophia
+		mkdir /firmware 0771 system system
+		mkdir /firmware/mdm 0771 system system
+		#Sophia
+
 on fs
     mkdir /rca 0775 radio radio
     mkdir /rfs 0755 radio radio
     mkdir /devlog 0700 root root
-    mount_all /fstab.enrc2b
+    mount_all /fstab.evitareul
     chmod 0660 /rca/calib.nvm
     chmod 0660 /rca
     chmod 0660 /rfs
     setprop ro.crypto.fuse_sdcard true
 
-loglevel 8
+		#Sophia
+		mount vfat /dev/block/platform/sdhci-tegra.3/by-name/MDM  /firmware/mdm ro shortname=lower
+		exec /system/bin/sh /init.qcom.firmware_links.sh /firmware/mdm/image /firmware "*.mbn *.img"
 
-on post-fs
-
-# GPS deamon
-    chmod 0774 /sys/class/gpio/gpio223/value
-    chown gps system /sys/class/gpio/gpio223/value
-
-    chmod 0774 /sys/class/gpio/gpio125/value
-    chown gps system sys/class/gpio/gpio125/value
-
-    mkdir /data/gps
-    chmod 0777 /data/gps
-    chown system system /data/gps
-    chmod 0770 /dev/ttyHS4
-    chown gps system /dev/ttyHS4
-    chmod 0777 /data/sph.cfg
-    chmod 0777 /system/bin/glgps
-    chmod 0777 /ststem/bin/gpslogd
+		mkdir /data/qcks 0770 system system
+		mkdir /data/efs 0771 system system
+		#Sophia
 
 on post-fs-data
-    # We will remap this as /storage/sdcard0 with the sdcard fuse tool
     mkdir /data/media 0770 media_rw media_rw
     chown media_rw media_rw /data/media
-
-    # Set indication (checked by vold) that we have finished this action
     setprop vold.post_fs_data_done 1
+    mkdir /dev/socket/qmux_radio 0770 radio radio
+    mkdir /dev/socket/qmux_audio 0770 audio audio
+    mkdir /dev/socket/qmux_bluetooth 0770 bluetooth bluetooth
+    mkdir /dev/socket/qmux_gps 0770 gps gps
+    mkdir /data/audio 0775 media audio
+    chmod 2775 /data/audio
 
 
 on boot
-    # Setup paths used for socket communication with the dhcp daemon(dhcpd)
-    mkdir /data/nvcam 0777 system system
-    mkdir /data/misc/wifi 0777 wifi wifi
-    mkdir /data/misc/wifi/sockets 0777 wifi wifi
-    mkdir /data/misc/wifi/hostapd 0777 wifi wifi
-    mkdir /data/misc/dhcp 0777 dhcp dhcp
+    mkdir /data/misc/dhcp 0775 dhcp dhcp
+    mkdir /data/nvcam 0775 system system
     chown dhcp dhcp /data/misc/dhcp
-
-    # bluetooth power up/down interface
+    mkdir /data/misc/wifi 0770 wifi wifi
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
-    chmod 0666                /sys/class/rfkill/rfkill0/state
-
+    chmod 0660                /sys/class/rfkill/rfkill0/state
     chown system /sys/module/edp/parameters/edp_ap_limit
+    chown system /sys/module/edp/parameters/edp_limits_table
     chown system /sys/devices/system/cpu/cpufreq/ondemand/touch_poke
-    chmod 644 /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate_min
     chown system /sys/devices/system/cpu/cpu_on
     chown system /sys/kernel/debug/tegra_hotplug/min_cpus
     chown system /sys/kernel/debug/tegra_hotplug/max_cpus
+    chown system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+    chown system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
     chown system /sys/module/cpu_tegra3/parameters/auto_hotplug
     chown system /sys/devices/system/cpu/cpu1/online
     chown system /sys/devices/system/cpu/cpu2/online
@@ -77,92 +72,54 @@ on boot
     chown system /sys/module/cpu_tegra3/parameters/NwNs
     chown system /sys/module/cpu_tegra3/parameters/TwTs
     chown system /sys/module/cpu_tegra/parameters/cpu_user_cap
+    chown radio radio /sys/module/cpu_tegra/parameters/ril_boost
     chown system /sys/kernel/debug/tegra_hotplug/min_cpus
     chmod 0660 /sys/kernel/debug/tegra_hotplug/min_cpus
     chown system /sys/htc/power_save
     chown system /sys/kernel/debug/tegra_emc/eack_state
-
-    # for radio signal stable
+    mkdir /data/preload 0771 system system
     chown radio radio /sys/class/power_supply/battery/charger_control
     chmod 0660 /sys/class/power_supply/battery/charger_control
     chown radio radio /sys/class/power_supply/battery/phone_call
     chmod 0660 /sys/class/power_supply/battery/phone_call
-
-# For Flashlight Restriction
-    chown radio system /sys/camera_led_status/led_ril_status
-    chown system system /sys/camera_led_status/led_wimax_status
-    chown system system /sys/camera_led_status/led_hotspot_status
-    chown system camera /sys/class/leds/flashlight/brightness
-    chmod 0660          /sys/class/leds/flashlight/brightness
-
-# Define DATA USAGE CTRL file permission
-    chown system system /proc/net/xt_qtaguid/ctrl
-    chmod 0666 /proc/net/xt_qtaguid/ctrl
-
-# Load modules while booting 
-    insmod /lib/modules/bcmdhd.ko
-    #insmod /lib/modules/baseband-xmm-power2.ko
-    #insmod /lib/modules/baseband_usb_chr.ko
-    #insmod /lib/modules/cdc-acm.ko
-    #insmod /lib/modules/raw_ip_net.ko
-
-# bluetooth
-    # Power up/down interface
+    setprop ro.htc.htcmode.data.path "/dev/ttyHSUSB3"
+    chown system system /sys/power/pnpmgr/apps/activity_trigger
+    chown system system /sys/power/pnpmgr/cpufreq/perflock_scaling_min
+    chown system system /sys/power/pnpmgr/cpufreq/perflock_scaling_max
+    chown system system /sys/power/pnpmgr/hotplug/cpu_auto_hotplug
+    chown system system /sys/power/pnpmgr/hotplug/min_on_cpus
+    chown system system /sys/power/pnpmgr/hotplug/cpu1_online
+    chown system system /sys/power/pnpmgr/hotplug/cpu2_online
+    chown system system /sys/power/pnpmgr/hotplug/cpu3_online
+    chown system system /sys/power/pnpmgr/thermal/edp_ap_limit
+    chown system system /sys/power/pnpmgr/cpufreq/ap_dvcs
+    chown system system /sys/power/launch_event
+    chown system system /sys/power/launch_activity
+    chown system system /sys/power/cpunum_ceiling
+    chown system system /sys/power/cpunum_floor
+    chown media media /sys/htc/media_boost_freq
+    chown media media /proc/emmc_burst
+    chmod 0660 /dev/ttyHS2
+    chown bluetooth bluetooth /dev/ttyHS2
     chmod 0660 /sys/class/rfkill/rfkill0/state
     chmod 0660 /sys/class/rfkill/rfkill0/type
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
-
-    # Bluetooth MAC address programming
+    chown bluetooth bluetooth ro.bt.bdaddr_path
     chown bluetooth bluetooth /system/etc/bluetooth
-    chown bluetooth bluetooth /sys/module/htc_bdaddress/parameters/bdaddress
-    setprop ro.bt.bdaddr_path /sys/module/htc_bdaddress/parameters/bdaddress
-
-    # For nvidia platform specific a2dp tuning support
+    setprop ro.bt.bdaddr_path "/system/etc/bluetooth/bdaddr"
     chown media media /sys/devices/platform/tegra_uart_brcm.2/a2dp_tuning
-
-    # For nvidia platform specific opp tuning support
     chown net_bt net_bt /sys/devices/platform/tegra_uart_brcm.2/opp_tuning
-
-#NFC
     setprop ro.nfc.port "I2C"
     chmod 0660 /dev/pn544
     chown nfc nfc /dev/pn544
-
-# set atmel touch permissions
     chown system system /sys/android_touch/unlock
-
-# set keyboard vol_wakeup permissions
     chown system system /sys/keyboard/vol_wakeup
-
-# backlight
     chown system system /sys/class/backlight/tegra-pwm-bl/brightness
-
-# leds
-    chown system system /sys/class/leds/green/brightness
-    chown system system /sys/class/leds/green/blink
-    chown system system /sys/class/leds/amber/brightness
-    chown system system /sys/class/leds/amber/blink
-
-# didim
     chown system system /sys/class/graphics/fb0/device/smartdimmer/enable
     chown system system /sys/class/graphics/fb0/device/smartdimmer/aggressiveness
-
-# Sensor
-    mkdir /data/sensors 0751 system system
-    mkdir /data/lightsensor 0751 system system
-    chmod 666 /dev/nvhost-ctrl
-    chmod 666 /dev/nvhost-display
-    chmod 666 /dev/nvhost-dsi
-    chmod 666 /dev/nvhost-gr2d
-    chmod 666 /dev/nvhost-gr3d
-    chmod 666 /dev/nvhost-isp
-    chmod 666 /dev/nvhost-mpe
-    chmod 666 /dev/nvhost-vi
     chown system system /sys/bus/iio/devices/device0/als_ir_mode
     chown system system /sys/bus/iio/devices/device0/proximity_enable
-
-# BB remote file system
     mkdir /data/rfs
     mkdir /data/rfs/data
     mkdir /data/rfs/data/modem
@@ -173,80 +130,233 @@ on boot
     symlink /system/vendor/firmware/data/config /data/rfs/data/config
     symlink /system/vendor/firmware/app /data/rfs/app
     symlink /mnt/modem/data/factory /data/rfs/data/factory
-
-# BB mapping symbolic name to the logging ttyACM port
     symlink /dev/ttyACM3 /dev/log_modem
-
-# GPIO BB access for user radio
     chown radio system /sys/class/gpio/gpio32/value
-
-    # allow interfaces to get v6 address when tethering is enabled
-    write /proc/sys/net/ipv6/conf/rmnet0/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet1/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet2/accept_ra 2
-
-    write /sys/module/cpu_tegra3/parameters/auto_hotplug 1
-    write /sys/kernel/debug/tegra_hotplug/max_cpus 4
     write /sys/module/cpu_tegra3/parameters/no_lp 0
-    #write /sys/module/tegra3_emc/parameters/emc_enable 0
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor ondemand
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor ondemand
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor ondemand
+    chown system /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate_min
+    chown system /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
+    chown system /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate_max
+    chown system /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
+    chown system /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
+    chown system /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
+    chown system /sys/devices/system/cpu/cpufreq/ondemand/touch_poke
     chown system /sys/htc/power_save
+    write /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate_min 10000
+    write /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate 50000
+    write /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor 4
+    write /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy 1
+    write /sys/devices/system/cpu/cpufreq/ondemand/up_threshold 90
+    write /sys/module/cpu_tegra3/parameters/auto_hotplug 1
     write /sys/module/cpuidle/parameters/lp2_in_idle 1
-
-# Increase read ahead size of mmc block devices from default(128) to 1MB
-# Reduces power comsuption during video playback from sdcards
-    write /sys/block/mmcblk0/queue/read_ahead_kb 2048
-    write /sys/block/mmcblk0/bdi/read_ahead_kb 2048
-
-    # Discretix DRM change start
+    setprop net.tcp.buffersize.lte     524288,1048576,3461120,262144,524288,1048576
+    setprop net.tcp.buffersize.hspap   4096,174760,1572864,4096,16384,110208
+    setprop net.tcp.buffersize.hspa    4096,174760,1572864,4096,16384,110208
+    setprop net.tcp.buffersize.hsupa   4096,174760,1572864,4096,16384,110208
+    setprop net.tcp.buffersize.hsdpa   4096,174760,1572864,4096,16384,110208
+    setprop net.tcp.buffersize.umts    4096,174760,1572864,4096,16384,110208
+    setprop net.tcp.buffersize.edge    4096,174760,1572864,4096,16384,35040
+    setprop net.tcp.buffersize.gprs    4096,174760,1572864,4096,8760,11680
     mkdir /data/DxDrm
     mkdir /data/DxDrm/fuse
     chmod 555 /data/DxDrm
     mkdir /sdcard/download
-    copy /etc/DxDrmConfig_Server.txt /data/DxDrm/DxDrmConfig_Server.txt
-
-# AUDIO
+    mkdir /dev/socket/qmux_gps 0770 gps gps
+    mkdir /data/misc/location 0770 gps gps
+    mkdir /data/misc/location/mq 0770 gps gps
     mkdir /data/audio
     chmod 755 /data/audio
     chown media audio /data/audio
+    chmod 0444 /system/lib/modules/bcmdhd.ko
+    insmod /system/lib/modules/bcmdhd.ko
+    write /proc/sys/net/ipv6/conf/p2p0/disable_ipv6 1
+    chown radio system /sys/camera_led_status/led_ril_status
+    chown system system /sys/camera_led_status/led_wimax_status
+    chown system system /sys/camera_led_status/led_hotspot_status
+    chown system system /sys/class/android_usb/f_modem/on
+    chown system system /sys/class/android_usb/f_diag/on
+    chown system system /sys/class/android_usb/f_rmnet/on
+    chown system system /sys/devices/platform/android_usb/usb_disable
+    chown radio radio /dev/diag
+    chown radio radio /dev/diag_mdm
+    chown radio radio /dev/htcdiag
+    chown radio radio /dev/diag_arm9
+    chown radio radio /dev/btdiag
+    chmod 0660 /dev/diag
+    chmod 0660 /dev/diag_mdm
+    chmod 0660 /dev/htcdiag
+    chmod 0660 /dev/diag_arm9
+    chmod 0660 /dev/btdiag
+    setprop net.tcp.buffersize.default 4096,87380,110208,4096,16384,110208
+    setprop net.tcp.buffersize.wifi    524288,1048576,2097152,262144,524288,1048576
+    setprop net.tcp.buffersize.lte     524288,1048576,2097152,262144,524288,1048576
+    setprop net.tcp.buffersize.hspa    4094,87380,704512,4096,16384,262144
+    setprop net.tcp.buffersize.hsdpa   4094,87380,704512,4096,16384,110208
+    setprop net.tcp.buffersize.umts    4094,87380,704512,4096,16384,110208
+    setprop net.tcp.buffersize.edge    4093,26280,704512,4096,16384,35040
+    setprop net.tcp.buffersize.gprs    4092,8760,704512,4096,8760,11680
+    chmod 755 /system/bin/RescueServer
+    chmod 755 /system/bin/RescueStarter
+    chown graphics /system/bin/RescueServer
+    chown graphics /system/bin/RescueStarter
 
-# compass/accelerometer daemon
-#service akmd /system/bin/akmd
-#    class main
-#    user compass
-#    group compass misc input
+# Services start here
 
-service pollyd /system/bin/pollyd
-    class main
+service adaptive /system/bin/adaptive
+    class core
     user root
     group root
-    
-# bugreport is triggered by the VOLUME-DOWN and VOLUME-UP keys/
+    disabled
+
+service akmd /system/bin/akmd
+    class main
+    user compass
+    group compass misc input
+
+service btld /system/bin/btld -lpm 1 -hb 3000000 -hp /dev/ttyHS2
+    user root
+    group bluetooth net_bt_admin
+    disabled
+    onrestart restart bluetoothd
+
 service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
     disabled
+    cgroup bg
     oneshot
     keycodes 115 114
 
+service cand /system/bin/cand
+    class main
+    user root
+
+service charging /system/bin/charging
+    user root
+    group root
+    disabled
+    oneshot
+
+service dhcpcd_brcm-pan /system/bin/dhcpcd -ABKL
+    disabled
+    oneshot
+
+service dhcpcd_p2p /system/bin/dhcpcd -aABKL
+    disabled
+    oneshot
+
+service dhcpcd_wlan0 /system/bin/dhcpcd -ABKL
+    disabled
+    oneshot
+
+service dmagent /system/bin/dmagent -N
+    class late_start
+    socket dmagent stream 660 root inet
+    user root
+    group radio cache inet misc
+    oneshot
+
+service dx_drm_server /system/bin/DxDrmServerIpc -f -o allow_other /data/DxDrm/fuse
+    class main
+    
+service ewtzmud /system/bin/ewtzmud
+    class main
+    user system
+    group system misc input
+
+service fusermount /system/bin/fusermount -u /data/htcfs
+    disabled
+    oneshot
+
+service gsm0710mux /system/bin/gsm0710muxd -s /dev/ttyACM0 -v 5 -n 8 -m basic
+    class core
+    user radio
+    group radio cache inet misc
+    disabled
+
+service hdmid /system/bin/hdmid
+    socket displayd stream 0660 root system graphics
+    disabled
+
+service htcbatt /system/bin/htcbatt
+     class core
+     oneshot
+
+service htc_ebdlogd /system/bin/htc_ebdlogd -s -k -P 7
+    user root
+    cgroup bg
+    disabled
+    oneshot
+    ioprio idle 0
+
+service htc_ebdlogd_rel /system/bin/htc_ebdlogd -s -k
+    user root
+    cgroup bg
+    disabled
+    oneshot
+    ioprio idle 0
+
+service htcfs /system/bin/htcfs /data/htcfs -f -o allow_other
+    class main
+    onrestart restart fusermount
+
+service iprenew_p2p /system/bin/dhcpcd -n
+    disabled
+    oneshot
+
+service iprenew_wlan0 /system/bin/dhcpcd -n
+    disabled
+    oneshot
+
+service kickstart /system/bin/qcks -1 modem_st1 -2 modem_st2 -3 mdm9k_config -i /firmware/mdm/image/ -u
+    class core
+    oneshot
+
+service modem-daemon /system/bin/modemd
+
+service netmgrd /system/bin/netmgrd
+    class core
+
+service netsharing_on /system/bin/netsharing net on
+    disabled
+    oneshot
+
+service netsharing_off /system/bin/netsharing net off
+    disabled
+    oneshot
+
+service netsharing_pass /system/bin/netsharing net_pass on
+    disabled
+    oneshot
+
 service nvm-server /system/bin/nvm_server
     class core
+    cgroup bg
     socket nvm-ctl stream 660 radio radio
     user root
     group root
     oneshot
 
-service init-acmx0 /system/bin/mknod /dev/ttyACMX0 c 66 0
-    class core
-    oneshot
-
-service init-acmx2 /system/bin/chmod 777 /dev/ttyACMX0
-    class core
-    oneshot
-
-# Start GPS daemon
-service gps-daemon /system/bin/glgps -c /system/etc/gps/gpsconfig.xml
-    socket gps seqpacket 0660 gps system
+service p2p_supplicant /system/bin/wpa_supplicant \
+	-iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf -N \
+	-ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf -e/data/misc/wifi/entropy.bin -puse_p2p_group_interface=1
     class main
-    user gps
-    group system sdcard_rw inet radio sdcard_r
+    socket wpa_wlan0 dgram 660 wifi wifi
+    disabled
+    oneshot
+
+service pnpmgr /system/bin/pnpmgr
+    class core
+    user root
+    group root
+    disabled
+
+service post_boot /system/bin/sh /system/etc/post_boot.sh
+    class main
+    user root
+    disabled
+    oneshot
 
 service poweron_modem /system/bin/poweron_modem_fls.sh /data/modem_work/
     class main
@@ -255,145 +365,19 @@ service poweron_modem /system/bin/poweron_modem_fls.sh /data/modem_work/
     oneshot
     disabled
 
-service nav /system/bin/navl_server --android_log NAVD-p3 -nav\"-c/system/bin/pathconfigfile.txt\"
-    class main
-    user root
-    oneshot
-
-service rxn_intapp /system/bin/RXN_IntApp /system/etc/gps/RXN/MSLConfig.txt
-    class main
-
-service rilPos-daemon /system/bin/rilposd -l /system/lib/librilpos.so -- -c agps_v_channel
-    class main
-    disabled
-    oneshot
-
-service cplc_main /system/bin/cplc_main
-    class main
-    disabled
-    oneshot
-
-service htcbatt /system/bin/htcbatt
-     class core
-     oneshot
-
-service wpa_supplicant /system/bin/wpa_supplicant \
-    -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf -e/data/misc/wifi/entropy.bin
-    #   we will start as root and wpa_supplicant will switch to user wifi
-    #   after setting up the capabilities required for WEXT
-    #   user wifi
-    #   group wifi inet keystore
-    class main
-    socket wpa_wlan0 dgram 660 wifi wifi
-    disabled
-    oneshot
-
-service p2p_supplicant /system/bin/wpa_supplicant \
-    -Dnl80211 -iwlan0 -puse_p2p_group_interface=1 -c/data/misc/wifi/wpa_supplicant.conf
-#   we will start as root and wpa_supplicant will switch to user wifi
-#   after setting up the capabilities required for WEXT
-#   user wifi
-#   group wifi inet keystore
-    class main
-    socket wpa_wlan0 dgram 660 wifi wifi
-    disabled
-    oneshot
-
-service dhcpcd_wlan0 /system/bin/dhcpcd -aABKL
-    class main
-    disabled
-    oneshot
-
-service dhcpcd_p2p /system/bin/dhcpcd -aABKL
-    class main
-    disabled
-    oneshot
-
-service dhcpcd_bnep0 /system/bin/dhcpcd -ABKL
-    class main
-    disabled
-    oneshot
-
-service dhcpcd_eth0 /system/bin/dhcpcd -ABKL
-    class main
-    disabled
-    oneshot
-
-service iprenew_wlan0 /system/bin/dhcpcd -n
-    class main
-    disabled
-    oneshot
-
-service iprenew_p2p /system/bin/dhcpcd -n
-    class main
-    disabled
-    oneshot
-
-service iprenew_bnep0 /system/bin/dhcpcd -n
-    class main
-    disabled
-    oneshot
-
-service hostapd_bin /system/bin/logwrapper /system/bin/hostapd -dd /data/misc/wifi/hostapd.conf
-    class main
-    socket wpa_wlan0 dgram 660 wifi wifi
-    disabled
-    oneshot
-
-on property:wlan.driver.status=ok
-    chown wifi wifi /sys/devices/platform/wl1271/bt_coex_state
-    
-service initial_regdom /system/bin/initial_regdom.sh
-     disabled
-     oneshot
-
-on property:wlan.driver.status=ok
-    chown wifi wifi /sys/devices/platform/wl1271/bt_coex_state
-    start initial_regdom
-
-on property:init.svc.hostapd_bin=running
-    start initial_regdom
-
-service upd_nvs_wlan0 /system/bin/calibrator set upd_nvs /system/etc/wifi/TQS_D_1.7.ini /proc/calibration /data/misc/wifi/wl1271-nvs-calibrated.bin
+service qmuxd /system/bin/qmuxd
     class core
     user root
-    group root
-    oneshot
+    group radio audio
 
-service chmod_nvs_wlan0 /system/bin/chmod 644 /data/misc/wifi/wl1271-nvs-calibrated.bin
+service RescueStarter /system/bin/RescueStarter
     class core
-    user root
-    group root
-    oneshot
+    user graphics
+    group input graphics
 
-#Prepare TF service
-service tf_daemon /system/bin/tf_daemon -storageDir /data/tf -d
-    disabled
-    class main
-    user root
-    group shell
-    oneshot
+service sdcard /system/bin/sdcard /data/media 1023 1023
+    class late_start
 
-#Create data directory and start service
-on property:tf.enable=y
-    mkdir /data/tf
-    start tf_daemon
-
-# Discretix DRM change start
-#service dx_drm_server /system/bin/DxDrmServerIpc -f -o allow_other /data/DxDrm/fuse
-#    class main
-
-# OMA DRM change start
-#service fusermount /system/bin/fusermount -u /data/htcfs
-#    disabled
-#    oneshot
-
-#service htcfs /system/bin/htcfs /data/htcfs -f -o allow_other
-#    class main
-#    onrestart restart fusermount
-# OMA DRM change end
-
-# create filesystems if necessary
 service setup_fs /system/bin/setup_fs \
         /dev/block/platform/sdhci-tegra.3/by-name/UDA \
         /dev/block/platform/sdhci-tegra.3/by-name/CAC \
@@ -403,55 +387,51 @@ service setup_fs /system/bin/setup_fs \
     group root
     oneshot
 
-service htc_ebdlogd /system/bin/htc_ebdlogd -s -k -P 7 -n 10 -N 10
+service shutdown /system/bin/shutdown
     user root
+    group root
     disabled
     oneshot
-    ioprio idle 0
 
-service htc_ebdlogd_rel /system/bin/htc_ebdlogd -s -k -P 7 -n 10 -N 10
-    user root
+service tf_daemon /system/bin/tf_daemon -storageDir /data/tf -d
     disabled
-    oneshot
-    ioprio idle 0
-
-on property:ro.build.tags=test-keys
-    start htc_ebdlogd
-
-on property:ro.build.tags=release-keys
-    start htc_ebdlogd_rel
-
-service cand /system/bin/cand
     class main
     user root
+    group shell
+    oneshot
 
-service post_boot /system/bin/sh /system/etc/post_boot.sh
-    class main
-    user root
+service udhcpd /system/bin/udhcpd
     disabled
     oneshot
 
-# Adb over Network
-on property:service.adb.tcp.port=5555
-    stop adbd
-    start adbd
-on property:service.adb.tcp.port=-1
-    stop adbd
-    start adbd
+service wpa_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant -Dnl80211 -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf -puse_p2p_group_interface=1
+    socket wpa_wlan0 dgram 660 wifi wifi
+    disabled
+    oneshot
+
+on property:ro.boot.wipeddata=0
+    write /sys/kernel/debug/tegra_hotplug/max_cpus 3
+    write /sys/kernel/debug/tegra_hotplug/min_cpus 3
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1700000
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 1700000
+    write /sys/module/cpu_tegra/parameters/cpu_user_cap 1300000
+
+on property:ro.boot.wipeddata=1
+    write /sys/kernel/debug/tegra_hotplug/max_cpus 1
+    write /sys/kernel/debug/tegra_hotplug/min_cpus 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1700000
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 1700000
+    write /sys/module/cpu_tegra/parameters/cpu_user_cap 1300000
 
 on property:init.svc.bootanim=stopped
-   start post_boot
+    write /sys/kernel/debug/tegra_hotplug/max_cpus 4
+    write /sys/kernel/debug/tegra_hotplug/min_cpus 1
+    write /sys/module/cpu_tegra/parameters/cpu_user_cap 0 
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 51000
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1700000
+    write /sys/module/cpu_tegra3/parameters/auto_hotplug 1
+    start post_boot
+    start pnpmgr
 
-# Create virtual SD card at /storage/sdcard0, based on the /data/media directory
-# deamon will drop to user/group system/media_rw after initializing
-# underlying files in /data/media wil be created with user and group media_rw (1023)
-service sdcard /system/bin/sdcard /data/media 1023 1023
-    class late_start
-
-# bluetooth
-service hciattach /system/bin/logwrapper /system/bin/brcm_patchram_plus --enable_hci --enable_lpm --no2bytes --tosleep 50000 --baudrate 4000000 --use_baudrate_for_download --scopcm 0,2,0,0,0,0,0,0,0,0 --i2s 1,0,0,1 --patchram /system/etc/firmware/bcm4334.hcd /dev/ttyHS2
-    class main    
-    user bluetooth
-    group bluetooth net_bt_admin
-    disabled
-    oneshot
+on property:ro.hdmi.enable=true
+    start hdmid
