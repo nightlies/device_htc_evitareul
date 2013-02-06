@@ -9,11 +9,10 @@ Working:
 * Camera
 * Display
 * Touch
-
+* WIFI
 
 Known issues:
 * RIL
-* WIFI
 * Bluetooth
 
 (thanks for the readme file sportstar)
