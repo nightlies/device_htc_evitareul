@@ -82,13 +82,11 @@ WIFI_DRIVER_FW_PATH_P2P     := "/system/etc/firmware/fw_bcm4334_p2p.bin"
 BOARD_HAVE_NFC := true
 
 # RIL
-#TARGET_PROVIDES_LIBRIL := true
+TARGET_PROVIDES_LIBRIL := true
 
 # HTCLOG
 COMMON_GLOBAL_CFLAGS += -DHTCLOG
 
-# Audio
-COMMON_GLOBAL_CFLAGS += -DICS_AUDIO_BLO
 
 # Partition Info
 #dev:        size     erasesize name

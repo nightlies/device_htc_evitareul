@@ -221,12 +221,14 @@ on post-fs-data
     # Set indication (checked by vold) that we have finished this action
     #setprop vold.post_fs_data_done 1
 
-# +SSD_RIL: from Qualcomm socket path
+#TESTING THIS OUT
+
+ #+SSD_RIL: from Qualcomm socket path
     #mkdir /dev/socket/qmux_radio 0770 radio radio
     #mkdir /dev/socket/qmux_audio 0770 audio audio
     #mkdir /dev/socket/qmux_bluetooth 0770 bluetooth bluetooth
     #mkdir /dev/socket/qmux_gps 0770 gps gps
-# -SSD_RIL: from Qualcomm socket path
+ #-SSD_RIL: from Qualcomm socket path
 
 #+SSD_AUD: soundhound dump pcm
     mkdir /data/audio 0775 media audio

@@ -263,16 +263,12 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/proprietary/etc/nfcee_access.xml:/system/etc/nfcee_access.xml \
     $(LOCAL_PATH)/proprietary/bin/htcfs:/system/bin/htcfs \
     $(LOCAL_PATH)/proprietary/etc/voicemail-conf.xml:/system/etc/voicemail-conf.xml \
-    $(LOCAL_PATH)/proprietary/bin/IMCdownload:/system/bin/IMCdownload \
-    $(LOCAL_PATH)/proprietary/bin/InjectionTool:/system/bin/InjectionTool \
     $(LOCAL_PATH)/proprietary/bin/ks:/system/bin/ks \
     $(LOCAL_PATH)/proprietary/bin/hdmid:/system/bin/hdmid \
     $(LOCAL_PATH)/proprietary/bin/cand:/system/bin/cand \
     $(LOCAL_PATH)/proprietary/bin/DxDrmServerIpc:/system/bin/DxDrmServerIpc \
     $(LOCAL_PATH)/proprietary/bin/efsks:/system/bin/efsks \
     $(LOCAL_PATH)/proprietary/bin/nvtest:/system/bin/nvtest \
-    $(LOCAL_PATH)/proprietary/bin/calibration:/system/bin/calibration \
-    $(LOCAL_PATH)/proprietary/bin/calibration.gpio4:/system/bin/calibration.gpio4 \
     $(LOCAL_PATH)/proprietary/bin/poweron_modem_hboot.sh:/system/bin/poweron_modem_hboot.sh \
     $(LOCAL_PATH)/proprietary/bin/qcks:/system/bin/qcks
   
@@ -507,7 +503,15 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/proprietary/lib/libdsprofile.so:/system/lib/libdsprofile.so \
     $(LOCAL_PATH)/proprietary/lib/libdss.so:/system/lib/libdss.so \
-    $(LOCAL_PATH)/proprietary/lib/libdsucsd.so:/system/lib/libdsucsd.so
+    $(LOCAL_PATH)/proprietary/lib/libdsucsd.so:/system/lib/libdsucsd.so \
+    $(LOCAL_PATH)/proprietary/etc/calibration:/system/etc/calibration \
+    $(LOCAL_PATH)/proprietary/etc/calibration.gpio4:/system/etc/calibration.gpio4
 
     
 ###VENDOR END###
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/proprietary/bin/downloader:/system/bin/downloader \
+    $(LOCAL_PATH)/proprietary/bin/getnvm.sh:/system/bin/getnvm.sh \
+    $(LOCAL_PATH)/proprietary/bin/ds_fmc_appd:/system/bin/s_fmc_appd \
+    $(LOCAL_PATH)/proprietary/bin/diag_uart_log:/system/bin/diag_uart_log 
