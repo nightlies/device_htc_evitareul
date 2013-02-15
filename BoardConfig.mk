@@ -81,11 +81,15 @@ WIFI_DRIVER_FW_PATH_P2P     := "/system/etc/firmware/fw_bcm4334_p2p.bin"
 # NFC
 BOARD_HAVE_NFC := true
 
-# RIL
-TARGET_PROVIDES_LIBRIL := true
+# HTC ril compatability
+BOARD_USE_NEW_LIBRIL_HTC := true
+TARGET_PROVIDES_LIBRIL := device/htc/evitareul/proprietary/lib/libril.so
 
 # HTCLOG
 COMMON_GLOBAL_CFLAGS += -DHTCLOG
+
+# Enable WEBGL in WebKit
+ENABLE_WEBGL := true
 
 
 # Partition Info
