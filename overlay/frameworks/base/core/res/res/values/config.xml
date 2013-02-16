@@ -36,12 +36,6 @@
     <!-- disable menu hard key in non-pattern lockscreen -->
     <bool name="config_disableMenuKeyInLockScreen">true</bool>
 
-    <!-- Package name providing network location support. -->
-    <string name="config_networkLocationProviderPackageName" translatable="false">com.google.android.location</string>
-
-    <!-- Package name providing geocoder API support. -->
-    <string name="config_geocodeProviderPackageName" translatable="false">com.google.android.location</string>
-
     <!-- Flag indicating whether we should enable the automatic brightness in Settings.
          config_hardware_automatic_brightness_available is not set, so we will use software implementation -->
     <bool name="config_automatic_brightness_available">true</bool>
@@ -201,9 +195,6 @@
     <!-- The VoiceMail default value is displayed to my own number if it is true -->
     <bool name="config_telephony_use_own_number_for_voicemail">true</bool>
 
-    <!-- Flag indicating whether we should enable automatic brightness for the button and keyboard backlights. -->
-    <bool name="config_autoBrightnessButtonKeyboard">false</bool>
-
     <!-- Component name of the default wallpaper. This will be ImageWallpaper if not
          specified -->
     <string name="default_wallpaper_component" translatable="false">com.android.phasebeam/.PhaseBeamWallpaper</string>
@@ -220,9 +211,6 @@
     <!-- If this is true, the screen will fade off. -->
     <bool name="config_animateScreenLights">false</bool>
 
-    <!-- Testing bluetooth wake lock problem -->
-    <bool name="config_bluetooth_adapter_quick_switch">false</bool>
-
     <!-- Hardware 'face' keys present on the device, stored as a bit field.
          This integer should equal the sum of the corresponding value for each
          of the following keys present:
@@ -233,6 +221,6 @@
             16 - App switch
          For example, a device with Home, Back and Menu keys would set this
          config to 7. -->
-    <integer name="config_deviceHardwareKeys">23</integer>
+    <integer name="config_deviceHardwareKeys">7</integer>
 
 </resources>

@@ -511,7 +511,5 @@ PRODUCT_COPY_FILES += \
 ###VENDOR END###
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/proprietary/bin/downloader:/system/bin/downloader \
-    $(LOCAL_PATH)/proprietary/bin/getnvm.sh:/system/bin/getnvm.sh \
-    $(LOCAL_PATH)/proprietary/bin/ds_fmc_appd:/system/bin/s_fmc_appd \
+    $(LOCAL_PATH)/proprietary/bin/qmuxd:/system/bin/qmuxd \
     $(LOCAL_PATH)/proprietary/bin/diag_uart_log:/system/bin/diag_uart_log 
