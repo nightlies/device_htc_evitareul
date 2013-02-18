@@ -37,13 +37,6 @@ CAMERA_USES_SURFACEFLINGER_CLIENT_STUB := true
 BOARD_HAVE_HTC_FFC := true
 BOARD_CAMERA_HAVE_ISO := true
 
-# Flags
-USE_MORE_OPT_FLAGS := yes
-
-#BASE_CFLAGS := -mfpu=neon -mfloat-abi=softfp
-#TARGET_GLOBAL_CFLAGS += $(BASE_CFLAGS)
-#TARGET_GLOBAL_CPPFLAGS += $(BASE_CFLAGS)
-
 # Board 
 TARGET_BOARD_PLATFORM := tegra
 TARGET_NO_BOOTLOADER := true
@@ -101,9 +94,9 @@ COMMON_GLOBAL_CFLAGS += -DHTCLOG
 
 # Kernel
 TARGET_PROVIDES_INIT_TARGET_RC := true
-TARGET_PREBUILT_KERNEL := device/htc/evitareul/prebuilt/kernel
-TARGET_KERNEL_SOURCE := kernel/htc/evitareul
-TARGET_KERNEL_CONFIG := evitareul_defconfig
+#TARGET_PREBUILT_KERNEL := device/htc/evitareul/prebuilt/kernel
+#TARGET_KERNEL_SOURCE := kernel/htc/evitareul
+#TARGET_KERNEL_CONFIG := evitareul_defconfig
 
 # NFC
 BOARD_HAVE_NFC := true

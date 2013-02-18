@@ -104,12 +104,6 @@ PRODUCT_PACKAGES += \
     sdcard \
     libmtp
 
-#Ril Testing
-#PRODUCT_PACKAGES += \
-    libril \
-    rild
-
-
 # DSP
 PRODUCT_COPY_FILES += \
     device/htc/evitareul/dsp/AIC3008_REG_DualMic.csv:system/etc/AIC3008_REG_DualMic.csv \
@@ -215,14 +209,6 @@ PRODUCT_LOCALES += en_GB xhdpi
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product-if-exists, vendor/htc/encr2b/evitareul-vendor.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
-
-# Discard inherited values and use our own instead.
-PRODUCT_DEVICE := evitareul
-PRODUCT_NAME := eviatreul
-PRODUCT_BRAND := htc
-PRODUCT_MODEL := One X+
-PRODUCT_MANUFACTURER := HTC
-
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -512,4 +498,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/proprietary/bin/qmuxd:/system/bin/qmuxd \
-    $(LOCAL_PATH)/proprietary/bin/diag_uart_log:/system/bin/diag_uart_log 
+    $(LOCAL_PATH)/proprietary/bin/diag_uart_log:/system/bin/diag_uart_log \
+    $(LOCAL_PATH)/proprietary/bin/netmgrd:/system/bin/netmgrd \
+    $(LOCAL_PATH)/proprietary/bin/dmagent:/system/bin/dmagent
+

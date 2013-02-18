@@ -34,7 +34,6 @@ on fs
     chmod 0660 /rca
     chmod 0660 /rfs
     setprop ro.crypto.fuse_sdcard true
-    setprop ro.crypto.umount_sd false
 
 		#Sophia
 		mount vfat /dev/block/platform/sdhci-tegra.3/by-name/MDM  /firmware/mdm ro shortname=lower
@@ -419,13 +418,13 @@ service dx_drm_server /system/bin/DxDrmServerIpc -f -o allow_other /data/DxDrm/f
 # Discretix DRM change end
 
 # OMA DRM change start
-service fusermount /system/bin/fusermount -u /data/htcfs
-    disabled
-    oneshot
+#service fusermount /system/bin/fusermount -u /data/htcfs
+#    disabled
+#    oneshot
 
-service htcfs /system/bin/htcfs /data/htcfs -f -o allow_other
-    class main
-    onrestart restart fusermount
+#service htcfs /system/bin/htcfs /data/htcfs -f -o allow_other
+#    class main
+#    onrestart restart fusermount
 # OMA DRM change end
 
 # init dmagent
