@@ -36,6 +36,7 @@ USE_CAMERA_STUB := false
 CAMERA_USES_SURFACEFLINGER_CLIENT_STUB := true
 BOARD_HAVE_HTC_FFC := true
 BOARD_CAMERA_HAVE_ISO := true
+COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB
 
 # Board 
 TARGET_BOARD_PLATFORM := tegra
@@ -65,19 +66,6 @@ BOARD_EGL_CFG := device/htc/evitareul/configs/egl.cfg
 # Graphics - Skia
 BOARD_USE_SKIA_LCDTEXT := true
 
-# Wifi related defines
-BOARD_WPA_SUPPLICANT_DRIVER := NL80211
-WPA_SUPPLICANT_VERSION      := VER_0_8_X
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
-BOARD_HOSTAPD_DRIVER        := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB   := lib_driver_cmd_bcmdhd
-BOARD_WLAN_DEVICE           := bcmdhd
-#WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/bcm4329.ko"
-WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/bcmdhd/parameters/firmware_path"
-WIFI_DRIVER_FW_PATH_STA     := "/system/etc/firmware/fw_bcm4334.bin"
-WIFI_DRIVER_FW_PATH_AP      := "/system/etc/firmware/fw_bcm4334_apsta.bin"
-WIFI_DRIVER_FW_PATH_P2P     := "/system/etc/firmware/fw_bcm4334_p2p.bin"
-
 # BT
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
@@ -94,7 +82,7 @@ COMMON_GLOBAL_CFLAGS += -DHTCLOG
 
 # Kernel
 TARGET_PROVIDES_INIT_TARGET_RC := true
-#TARGET_PREBUILT_KERNEL := device/htc/evitareul/prebuilt/kernel
+TARGET_PREBUILT_KERNEL := device/htc/evitareul/prebuilt/kernel
 #TARGET_KERNEL_SOURCE := kernel/htc/evitareul
 #TARGET_KERNEL_CONFIG := evitareul_defconfig
 
@@ -107,6 +95,19 @@ TARGET_PROVIDES_LIBRIL := device/htc/evitareul/proprietary/lib/libril.so
 
 # Enable WEBGL in WebKit
 ENABLE_WEBGL := true
+
+# Wifi related defines
+BOARD_WPA_SUPPLICANT_DRIVER := NL80211
+WPA_SUPPLICANT_VERSION      := VER_0_8_X
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
+BOARD_HOSTAPD_DRIVER        := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB   := lib_driver_cmd_bcmdhd
+BOARD_WLAN_DEVICE           := bcmdhd
+#WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/bcm4329.ko"
+WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/bcmdhd/parameters/firmware_path"
+WIFI_DRIVER_FW_PATH_STA     := "/system/etc/firmware/fw_bcm4334.bin"
+WIFI_DRIVER_FW_PATH_AP      := "/system/etc/firmware/fw_bcm4334_apsta.bin"
+WIFI_DRIVER_FW_PATH_P2P     := "/system/etc/firmware/fw_bcm4334_p2p.bin"
 
 # Partition Info
 #dev:        size     erasesize name

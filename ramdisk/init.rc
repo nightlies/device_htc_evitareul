@@ -242,18 +242,6 @@ on post-fs-data
     # won't work.
     # Set indication (checked by vold) that we have finished this action
     #setprop vold.post_fs_data_done 1
-    
-#+SSD_RIL: from Qualcomm socket path
-    mkdir /dev/socket/qmux_radio 0770 radio radio
-    mkdir /dev/socket/qmux_audio 0770 audio audio
-    mkdir /dev/socket/qmux_bluetooth 0770 bluetooth bluetooth
-    mkdir /dev/socket/qmux_gps 0770 gps gps
-#-SSD_RIL: from Qualcomm socket path
-
-#+SSD_AUD: soundhound dump pcm
-    mkdir /data/audio 0775 media audio
-    chmod 2775 /data/audio
-#-SSD_AUD: soundhound dump pcm
 
 on boot
 # basic network init
@@ -372,24 +360,6 @@ on boot
     chown system system /sys/kernel/ipv4/tcp_rmem_max
     chown root radio /proc/cmdline
 
-# HTC SSD USB
-    chown system system /sys/class/android_usb/f_modem/on
-    chown system system /sys/class/android_usb/f_diag/on
-    chown system system /sys/class/android_usb/f_rmnet/on
-    chown system system /sys/devices/platform/android_usb/usb_disable
-
-#set diag permissions
-    chown radio radio /dev/diag
-    chown radio radio /dev/diag_mdm
-    chown radio radio /dev/htcdiag
-    chown radio radio /dev/diag_arm9
-    chown radio radio /dev/btdiag
-    chmod 0660 /dev/diag
-    chmod 0660 /dev/diag_mdm
-    chmod 0660 /dev/htcdiag
-    chmod 0660 /dev/diag_arm9
-    chmod 0660 /dev/btdiag
-    
 # Define TCP buffer sizes for various networks
 #   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
     setprop net.tcp.buffersize.default 4096,87380,256960,4096,16384,256960
@@ -488,10 +458,6 @@ service adbd /sbin/adbd
 on property:ro.kernel.qemu=1
     start adbd
 
-service sfc /sbin/sfc
-    class core
-	oneshot
-
 service servicemanager /system/bin/servicemanager
     class core
     user system
@@ -530,20 +496,15 @@ service nvm-server /system/bin/nvm_server
     group root
     oneshot
 
-#service poweron_modem /system/bin/poweron_modem.sh /data/modem_work/
-##    class late_start
-#    user root
-#    group root
-#    oneshot
-##    start gsm0710mux
-
-service modem-daemon /system/bin/modemd
-
-#Sophia-0410
-service kickstart /system/bin/qcks -1 modem_st1 -2 modem_st2 -3 mdm9k_config -i /firmware/mdm/image/ -u
+service init-acmx0 /system/bin/mknod /dev/ttyACMX0 c 66 0
     class core
     oneshot
 
+service init-acmx2 /system/bin/chmod 777 /dev/ttyACMX0
+    class core
+    oneshot
+
+service modem-daemon /system/bin/modemd
 
 service ril-daemon /system/bin/rild
     class core
@@ -561,13 +522,6 @@ service surfaceflinger /system/bin/surfaceflinger
     user system
     group graphics drmrpc
     onrestart restart zygote
-
-service hdmid /system/bin/hdmid
-    socket displayd stream 0660 root system graphics
-    disabled
-
-on property:ro.hdmi.enable=true
-    start hdmid
 
 service zygote /system/bin/app_process -Xzygote /system/bin --zygote --start-system-server
     class main
@@ -667,10 +621,4 @@ on property:persist.service.zram=18
 on property:persist.service.zram=26
     start compcache
 
-#HTC_WIFI_START
-service L2PE /system/bin/l2_profile_exchange handset wlan1
-    user root
-    group root
-    disabled
-    oneshot
-#HTC_WIFI_END
+
