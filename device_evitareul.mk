@@ -97,6 +97,9 @@ PRODUCT_PACKAGES += \
 # DSP
 PRODUCT_COPY_FILES += \
     device/htc/evitareul/proprietary/etc/AIC3008_REG_DualMic.csv:system/etc/AIC3008_REG_DualMic.csv \
+    device/htc/evitareul/proprietary/etc/asound.conf:system/etc/asound.conf \
+    device/htc/evitareul/proprietary/etc/audio_effects.conf:system/etc/audio_effects.conf \
+    device/htc/evitareul/proprietary/etc/audio_policy.conf:system/etc/audio_policy.conf \
     device/htc/evitareul/proprietary/etc/soundimage/CodecDSPID.txt:system/etc/soundimage/CodecDSPID.txt \
     device/htc/evitareul/proprietary/etc/soundimage/CodecDSPID_XA.txt:system/etc/soundimage/CodecDSPID_XA.txt \
     device/htc/evitareul/proprietary/etc/soundimage/Sound_AMR_Recording.txt:system/etc/soundimage/Sound_AMR_Recording.txt \
@@ -386,18 +389,31 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/proprietary/lib/libhtc-opt2.so:/system/lib/libhtc-opt2.so \
     $(LOCAL_PATH)/proprietary/lib/libcall_volume.so:/system/lib/libcall_volume.so
 
-
-# IDC
+# GPS
 PRODUCT_COPY_FILES += \
-    device/htc/evitareul/proprietary/usr/idc/atmel-maxtouch.idc:system/usr/idc/atmel-maxtouch.idc \
-    device/htc/evitareul/proprietary/usr/idc/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc \
-    device/htc/evitareul/proprietary/usr/idc/tv-touchscreen.idc:system/usr/idc/tv-touchscreen.idc
+   $(LOCAL_PATH)/proprietary/etc/gps.conf:/system/etc/gps.conf \
+   $(LOCAL_PATH)/proprietary/etc/gps.conf_default:/system/etc/gps.conf_default \
+   $(LOCAL_PATH)/proprietary/lib/libloc_adapter.so:/system/lib/libloc_adapter.so \
+   $(LOCAL_PATH)/proprietary/lib/libloc_api_v02.so:/system/lib/libloc_api_v02.so \
+   $(LOCAL_PATH)/proprietary/lib/libloc_eng.so:/system/lib/libloc_eng.so \
+   $(LOCAL_PATH)/proprietary/lib/libloc_ext.so:/system/lib/libloc_ext.so \
+   $(LOCAL_PATH)/proprietary/etc/gps.conf_TELUS001:/system/etc/gps.conf_TELUS001 \
+   $(LOCAL_PATH)/proprietary/etc/gps.conf:/system/etc/gps.conf \
+   $(LOCAL_PATH)/proprietary/lib/libgps.utils.so:/system/lib/libgps.utils.so \
+   $(LOCAL_PATH)/proprietary/etc/agps_rm:/system/etc/agps_rm
 
-# Keylayouts & Keychars
+# Input device configeration files
+# for remapped APP_SWITCH to MENU
 PRODUCT_COPY_FILES += \
-    device/htc/evitareul/proprietary/usr/keychars/qwerty.kcm:system/usr/keychars/qwerty.kcm \
-    device/htc/evitareul/proprietary/usr/keylayout/qwerty.kl:system/usr/keychars/qwerty.kl
+    $(LOCAL_PATH)/proprietary/usr/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
 
+# properitary ones
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/proprietary/usr/keylayout/tegra-kbc.kl:/system/usr/keylayout/tegra-kbc.kl \
+    $(LOCAL_PATH)/proprietary/usr/keylayout/projector-Keypad.kl:/system/usr/keylayout/projector-Keypad.kl \
+    $(LOCAL_PATH)/proprietary/usr/idc/atmel-maxtouch.idc:system/usr/idc/atmel-maxtouch.idc \
+    $(LOCAL_PATH)/proprietary/usr/idc/tv-touchscreen.idc:system/usr/idc/tv-touchscreen.idc \
+    $(LOCAL_PATH)/proprietary/usr/idc/projector_input.idc:system/usr/idc/projector_input.idc
 
 # FIRMWARE
 PRODUCT_COPY_FILES += \
@@ -487,8 +503,5 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/proprietary/lib/libdsucsd.so:/system/lib/libdsucsd.so \
     $(LOCAL_PATH)/proprietary/etc/calibration:/system/etc/calibration \
     $(LOCAL_PATH)/proprietary/etc/calibration.gpio4:/system/etc/calibration.gpio4 \
-    $(LOCAL_PATH)/proprietary/etc/gps.conf_TELUS001:/system/etc/gps.conf_TELUS001 \
-    $(LOCAL_PATH)/proprietary/etc/gps.conf:/system/etc/gps.conf \
-    $(LOCAL_PATH)/proprietary/etc/DSP_number.txt:/system/etc/DSP_number.txt \
-    $(LOCAL_PATH)/proprietary/etc/agps_rm:/system/etc/agps_rm
+    $(LOCAL_PATH)/proprietary/etc/DSP_number.txt:/system/etc/DSP_number.txt
 
