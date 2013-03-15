@@ -390,7 +390,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/proprietary/lib/libcall_volume.so:/system/lib/libcall_volume.so
 
 # GPS
-PRODUCT_COPY_FILES += \
+#PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/proprietary/etc/gps.conf:/system/etc/gps.conf \
    $(LOCAL_PATH)/proprietary/etc/gps.conf_default:/system/etc/gps.conf_default \
    $(LOCAL_PATH)/proprietary/lib/libloc_adapter.so:/system/lib/libloc_adapter.so \
@@ -409,7 +409,6 @@ PRODUCT_COPY_FILES += \
 
 # properitary ones
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/proprietary/usr/keylayout/tegra-kbc.kl:/system/usr/keylayout/tegra-kbc.kl \
     $(LOCAL_PATH)/proprietary/usr/keylayout/projector-Keypad.kl:/system/usr/keylayout/projector-Keypad.kl \
     $(LOCAL_PATH)/proprietary/usr/idc/atmel-maxtouch.idc:system/usr/idc/atmel-maxtouch.idc \
     $(LOCAL_PATH)/proprietary/usr/idc/tv-touchscreen.idc:system/usr/idc/tv-touchscreen.idc \
