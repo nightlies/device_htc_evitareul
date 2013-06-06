@@ -27,7 +27,6 @@ bin/xaplay
 # Audio
 lib/hw/audio.primary.tegra.so
 lib/libaudioavp.so
-lib/libasound.so
 
 # Camera
 lib/hw/camera.tegra.so
@@ -71,9 +70,6 @@ lib/egl/libEGL_tegra.so
 lib/egl/libEGL_perfhud.so
 lib/egl/libGLESv1_CM_perfhud.so
 lib/egl/libGLESv1_CM_tegra.so
-lib/libGLESv1_CM_tegra_impl.so
-lib/libGLESv2_tegra_impl.so
-lib/libEGL_tegra_impl.so
 lib/egl/libGLESv2_perfhud.so
 lib/egl/libGLESv2_tegra.so
 lib/libcgdrv.so
@@ -140,5 +136,4 @@ lib/hw/hwcomposer.tegra.so
 lib/hw/audio_policy.tegra.so
 lib/hw/sensors.evitareul.so
 lib/hw/gralloc.default.so
-bin/surface_flinger
 lib/libnvcam_imageencoder.so
