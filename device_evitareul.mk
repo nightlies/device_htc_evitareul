@@ -172,7 +172,6 @@ PRODUCT_COPY_FILES += \
     device/htc/evitareul/firmware/nvavp_vid_ucode_alt.bin:system/etc/firmware/nvavp_vid_ucode_alt.bin \
     device/htc/evitareul/firmware/nvavp_vid_ucode.bin:system/etc/firmware/nvavp_vid_ucode.bin
 
-
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
@@ -202,6 +201,22 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/proprietary/usr/keylayout/projector-Keypad.kl:/system/usr/keylayout/projector-Keypad.kl \
     $(LOCAL_PATH)/proprietary/usr/idc/atmel-maxtouch.idc:system/usr/idc/atmel-maxtouch.idc \
+    $(LOCAL_PATH)/proprietary/usr/idc/tv-touchscreen.idc:system/usr/idc/tv-touchscreen.idc \
+    $(LOCAL_PATH)/proprietary/usr/idc/projector_input.idc:system/usr/idc/projector_input.idc
+
+# FIRMWARE
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/proprietary/etc/firmware/bcm4330.hcd:system/etc/firmware/bcm4330.hcd \
+    $(LOCAL_PATH)/proprietary/etc/firmware/BCM4334B0_002.001.013.0488.0607.hcd:system/etc/firmware/bcm4334.hcd \
+    $(LOCAL_PATH)/proprietary/etc/firmware/fw_bcm4334.bin:system/etc/firmware/fw_bcm4334.bin \
+    $(LOCAL_PATH)/proprietary/etc/firmware/fw_bcm4334_apsta.bin:system/etc/firmware/fw_bcm4334_apsta.bin \
+    $(LOCAL_PATH)/proprietary/etc/firmware/fw_bcm4334_p2p.bin:system/etc/firmware/fw_bcm4334_p2p.bin \
+    $(LOCAL_PATH)/proprietary/etc/firmware/nvavp_aud_ucode.bin:system/etc/firmware/nvavp_aud_ucode.bin \
+    $(LOCAL_PATH)/proprietary/etc/firmware/nvavp_os_0ff00000.bin:system/etc/firmware/nvavp_os_0ff00000.bin \
+    $(LOCAL_PATH)/proprietary/etc/firmware/nvavp_os_eff00000.bin:system/etc/firmware/nvavp_os_eff00000.bin \
+    $(LOCAL_PATH)/proprietary/etc/firmware/nvavp_vid_ucode.bin:system/etc/firmware/nvavp_vid_ucode.bin \
+    $(LOCAL_PATH)/proprietary/etc/firmware/nvavp_vid_ucode_alt.bin:system/etc/firmware/nvavp_vid_ucode_alt.bin \
+    $(LOCAL_PATH)/proprietary/vendor/firmware/libpn544_fw.so:system/vendor/firmware/libpn544_fw.so
 
   # Prebuilt Alsa configs
 PRODUCT_COPY_FILES += \
