@@ -27,6 +27,8 @@ bin/xaplay
 # Audio
 lib/hw/audio.primary.tegra.so
 lib/libaudioavp.so
+lib/hw/audio.primary.tegra.so
+lib/hw/audio_policy.tegra.so
 
 # Camera
 lib/hw/camera.tegra.so
