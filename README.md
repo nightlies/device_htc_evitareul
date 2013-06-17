@@ -1,6 +1,8 @@
 android_device_htc_evitareul
 ========================
 
+Testing Branch
+
 Android device tree for HTC evitareul (AT&T One X=)
 
 Working:
