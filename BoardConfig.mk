@@ -23,6 +23,7 @@
 # WARNING: This line must come *before* including the proprietary
 # variant, so that it gets overwritten by the parent (which goes
 # against the traditional rules of inheritance).
+
 # Skip droiddoc build to save build time
 BOARD_SKIP_ANDROID_DOC_BUILD := true
 
@@ -36,7 +37,8 @@ USE_CAMERA_STUB := false
 CAMERA_USES_SURFACEFLINGER_CLIENT_STUB := true
 BOARD_HAVE_HTC_FFC := true
 BOARD_CAMERA_HAVE_ISO := true
-COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB
+COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB 
+COMMON_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
 
 # Board 
 TARGET_BOARD_PLATFORM := tegra
@@ -48,7 +50,12 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_ARCH_VARIANT_CPU := cortex-a9
 TARGET_CPU_SMP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
-TARGET_EXTRA_CFLAGS += -mtune=cortex-a9 -mcpu=cortex-a9
+ARCH_ARM_HAVE_32_BYTE_CACHE_LINES := true
+ARCH_ARM_USE_NON_NEON_MEMCPY := true
+
+# Optimization build flags
+TARGET_GLOBAL_CFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 
 # Board nameing
 TARGET_NO_RADIOIMAGE := true
@@ -65,6 +72,20 @@ BOARD_EGL_CFG := device/htc/evitareul/configs/egl.cfg
 
 # Graphics - Skia
 BOARD_USE_SKIA_LCDTEXT := true
+
+# Wifi related defines
+BOARD_WPA_SUPPLICANT_DRIVER := NL80211
+WPA_SUPPLICANT_VERSION      := VER_0_8_X
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
+BOARD_HOSTAPD_DRIVER        := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB   := lib_driver_cmd_bcmdhd
+BOARD_WLAN_DEVICE           := bcmdhd
+#WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/bcm4329.ko"
+WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/bcmdhd/parameters/firmware_path"
+WIFI_DRIVER_FW_PATH_STA     := "/system/etc/firmware/fw_bcm4334.bin"
+WIFI_DRIVER_FW_PATH_AP      := "/system/etc/firmware/fw_bcm4334_apsta.bin"
+WIFI_DRIVER_FW_PATH_P2P     := "/system/etc/firmware/fw_bcm4334_p2p.bin"
+
 
 # BT
 BOARD_HAVE_BLUETOOTH := true
@@ -85,7 +106,7 @@ COMMON_GLOBAL_CFLAGS += -DHTCLOG
 TARGET_PROVIDES_INIT_TARGET_RC := true
 #TARGET_PREBUILT_KERNEL := device/htc/evitareul/prebuilt/kernel
 TARGET_KERNEL_SOURCE := kernel/htc/evitareul
-TARGET_KERNEL_CONFIG := evitareul_defconfig
+TARGET_KERNEL_CONFIG := pizza_defconfig
 
 # NFC
 BOARD_HAVE_NFC := true
@@ -96,19 +117,6 @@ TARGET_PROVIDES_LIBRIL := device/htc/evitareul/proprietary/lib/libril.so
 
 # Enable WEBGL in WebKit
 ENABLE_WEBGL := true
-
-# Wifi related defines
-BOARD_WPA_SUPPLICANT_DRIVER := NL80211
-WPA_SUPPLICANT_VERSION      := VER_0_8_X
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
-BOARD_HOSTAPD_DRIVER        := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB   := lib_driver_cmd_bcmdhd
-BOARD_WLAN_DEVICE           := bcmdhd
-#WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/bcm4329.ko"
-WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/bcmdhd/parameters/firmware_path"
-WIFI_DRIVER_FW_PATH_STA     := "/system/etc/firmware/fw_bcm4334.bin"
-WIFI_DRIVER_FW_PATH_AP      := "/system/etc/firmware/fw_bcm4334_apsta.bin"
-WIFI_DRIVER_FW_PATH_P2P     := "/system/etc/firmware/fw_bcm4334_p2p.bin"
 
 # Partition Info
 #dev:        size     erasesize name
@@ -129,16 +137,21 @@ WIFI_DRIVER_FW_PATH_P2P     := "/system/etc/firmware/fw_bcm4334_p2p.bin"
 #mmcblk0p21: 00800000 00001000 "modem_st1"
 #mmcblk0p22: 00800000 00001000 "modem_st2"
 
+# Boot/Recovery image settings
+BOARD_KERNEL_CMDLINE :=
+BOARD_KERNEL_BASE := 0x10000000
+BOARD_KERNEL_PAGESIZE := 2048
+
 # Memory
-TARGET_USERIMAGES_USE_EXT4 := true
-BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 8388608
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1342177280
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 2302672896
-BOARD_FLASH_BLOCK_SIZE := 4096
-BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
-BOARD_VOLD_MAX_PARTITIONS := 22
-BOARD_HAS_SDCARD_INTERNAL := true
+#TARGET_USERIMAGES_USE_EXT4 := true
+#BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
+#BOARD_RECOVERYIMAGE_PARTITION_SIZE := 8388608
+#BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1342177280
+#BOARD_USERDATAIMAGE_PARTITION_SIZE := 2302672896
+#BOARD_FLASH_BLOCK_SIZE := 4096
+#BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
+#BOARD_VOLD_MAX_PARTITIONS := 22
+#BOARD_HAS_SDCARD_INTERNAL := true
 
 #Recovery
 
