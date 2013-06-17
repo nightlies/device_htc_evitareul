@@ -1,7 +1,4 @@
-# Configuration files
 etc/agps_rm
-
-# Executable files
 bin/ATFWD-daemon
 bin/atpipe_plain
 bin/atrace
@@ -23,16 +20,19 @@ bin/qmiproxy
 bin/qmuxd
 bin/tf_daemon
 bin/xaplay
-
-# Audio
 lib/hw/audio.primary.tegra.so
 lib/libaudioavp.so
 lib/hw/audio.primary.tegra.so
 lib/hw/audio_policy.tegra.so
-
-# Camera
+lib/libcameraface.so
 lib/hw/camera.tegra.so
+lib/libBeautyChat.so
+lib/libbt-aptx-4.1.1.so
+lib/libcameraasd.so
+lib/libcameraface.so
+lib/libcamerapp.so
 lib/libcapsjava.so
+lib/libcsd-client.so
 lib/libscalado.so
 lib/libscalado_htcalbum2.so
 lib/libscaladoapi.so
@@ -40,6 +40,17 @@ lib/libscaladoutil.so
 lib/libposteffect.so
 lib/libdumppcm.so
 lib/libhtccamera.so
+lib/libnvaudioservice.so
+lib/libnvcameracallbacks.so
+lib/libnvcamerahdr.so
+lib/libnvcap.so
+lib/libnvcap_video.so
+lib/libnvcapclk.so
+lib/libnvglsi.so
+lib/libnvomxadaptor.so
+lib/libnvremoteevtmgr.so
+lib/libnvremotell.so
+lib/libnvremoteprotocol.so
 lib/libnvmm.so
 lib/libnvmm_audio.so
 lib/libnvmm_asfparser.so
@@ -66,15 +77,19 @@ lib/libnvapputil.so
 lib/libnvasfparserhal.so
 lib/libnvaviparserhal.so
 lib/libnvavp.so
-
-# Graphics
 lib/egl/libEGL_tegra.so
-lib/egl/libEGL_perfhud.so
+lib/egl/libEGL_tegra_impl.so
+lib/egl/libGLES_android.so
 lib/egl/libGLESv1_CM_perfhud.so
-lib/egl/libGLESv1_CM_tegra.so
+lib/egl/libEGL_perfhud.so
+lib/libGLES_trace.so
+lib/libGLESv1_CM_tegra.so
+lib/libGLESv2.so
+lib/egl/libGLESv1_CM_tegra_impl.so
 lib/egl/libGLESv2_perfhud.so
 lib/egl/libGLESv2_tegra.so
-lib/libcgdrv.so
+lib/egl/libGLESv2_tegra_impl.so
+lib/libcgdrv.soS
 lib/libnvos.so
 lib/libnvparser.so
 lib/libnvrm.so
@@ -95,13 +110,8 @@ lib/libnvtestresults.so
 lib/libnvtvmr.so
 lib/libnvwinsys.so
 lib/libnvwsi.so
-
-
-# NFC
 lib/hw/nfc.evitareul.so
 vendor/firmware/libpn544_fw.so
-
-# Radio
 lib/libdiag.so
 lib/libdsi_netctrl.so
 lib/libdsutils.so
@@ -121,8 +131,6 @@ lib/libqmi_encdec.so
 lib/libril.so
 lib/libril-qc-qmi-1.so
 lib/libril-qcril-hook-oem.so
-
-# MISC
 lib/libhtc-opt2.so
 lib/libhtcsunny2engine.so
 lib/libhtcsunnyengine.so
@@ -133,6 +141,8 @@ lib/libmllite.so
 lib/libmlplatform.so
 lib/libmpl.so
 lib/libmpl_jni.so
+lib/libsensors_mpl.so
+lib/libstagefrighthw.so
 lib/hw/gralloc.tegra.so
 lib/hw/hwcomposer.tegra.so
 lib/hw/audio_policy.tegra.so
