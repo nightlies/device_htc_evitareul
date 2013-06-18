@@ -147,3 +147,5 @@ wifi.interface=wlan0
 
 # UMS
 persist.sys.usb.config=mass_storage,adb
+
+service.htc_ebdlogd.enable=1

@@ -28,23 +28,26 @@ PRODUCT_PACKAGES += \
 PODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
-# Live Wallpapers
 PRODUCT_PACKAGES += \
-    librs_jni \
-    LiveWallpapers \
-    LiveWallpapersPicker \
-    VisualizationWallpapers 
+    hostapd_cli \
+        calibrator
 
-# Hostapd
+# video
 PRODUCT_PACKAGES += \
-         hostapd_cli \
-         calibrator \
-         hostapd
+    libstagefrighthw
 
+# camera wrapper 
+PRODUCT_PACKAGES += \
+    camera.tegra
+    
 # lights
 PRODUCT_PACKAGES += \
-        lights.tegra
+    lights.tegra
 
+# power
+PRODUCT_PACKAGES += \
+    power.tegra
+        
 #NFC
 PRODUCT_PACKAGES += \
     libnfc \
@@ -66,14 +69,19 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     iw 
 
-# pollyd
+# other apps
 PRODUCT_PACKAGES += \
-    Polly \
-    pollyd
-
-# Torch
-PRODUCT_PACKAGES += \
-    Torch
+    Apollo \
+    DSPManager \
+    libcyanogen-dsp \
+    libncurses \
+    bash \
+    CMFileManager \
+    PinyinIME \
+    PerformanceTool \
+    Torch \
+    CellBroadcastReceiver \
+    EndeavoruParts
 
 # Misc
 PRODUCT_PACKAGES += \
@@ -93,6 +101,7 @@ PRODUCT_PACKAGES += \
     setup_fs \
     sdcard \
     libmtp
+
 
 # DSP
 PRODUCT_COPY_FILES += \
@@ -199,8 +208,9 @@ PRODUCT_COPY_FILES += \
 
 # properitary ones
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/proprietary/usr/keylayout/projector-Keypad.kl:/system/usr/keylayout/projector-Keypad.kl \
-    $(LOCAL_PATH)/proprietary/usr/idc/atmel-maxtouch.idc:system/usr/idc/atmel-maxtouch.idc \
+    $(LOCAL_PATH)/proprietary/usr/keylayout/tegra-kbc.kl:system/usr/keylayout/tegra-kbc.kl \
+    $(LOCAL_PATH)/proprietary/usr/keylayout/projector-Keypad.kl:system/usr/keylayout/projector-Keypad.kl \
+    $(LOCAL_PATH)/proprietary/usr/idc/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc \
     $(LOCAL_PATH)/proprietary/usr/idc/tv-touchscreen.idc:system/usr/idc/tv-touchscreen.idc \
     $(LOCAL_PATH)/proprietary/usr/idc/projector_input.idc:system/usr/idc/projector_input.idc
 
@@ -273,6 +283,7 @@ PRODUCT_COPY_FILES += \
 # Prebuilts from the HOX
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/proprietary/lib/hw/audio.primary.tegra.so:system/lib/hw/audio.primary.tegra.so \
+    $(LOCAL_PATH)/proprietary/lib/hw/audio_policy.tegra.so:system/lib/hw/audio_policy.tegra.so \
     $(LOCAL_PATH)/proprietary/lib/libasound.so:system/lib/libasound.so
 
 
