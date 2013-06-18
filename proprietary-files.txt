@@ -42,6 +42,11 @@ lib/egl/libGLESv1_CM_tegra.so
 lib/egl/libGLESv2_perfhud.so
 lib/egl/libGLESv2_tegra_impl.so
 lib/egl/libGLESv2_tegra.so
+lib/hw/audio.a2dp.default.so
+lib/hw/audio.primary.default.so
+lib/hw/audio_policy.default.so
+lib/hw/audio_policy.tegra.so
+lib/hw/camera.tegra.so
 lib/hw/gralloc.default.so
 lib/hw/gralloc.tegra.so
 lib/hw/hwcomposer.tegra.so
