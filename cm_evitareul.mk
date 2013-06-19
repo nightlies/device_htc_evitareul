@@ -167,20 +167,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/htc/evitareul/vold.fstab:system/etc/vold.fstab
 
-# Firmware
-PRODUCT_COPY_FILES += \
-    device/htc/evitareul/firmware/bcm4329.hcd:system/etc/firmware/bcm4329.hcd \
-    device/htc/evitareul/firmware/bcm4330.hcd:system/etc/firmware/bcm4330.hcd \
-    device/htc/evitareul/firmware/BCM4334B0_002.001.013.0488.0607.hcd:system/etc/firmware/BCM4334B0_002.001.013.0488.0607.hcd \
-    device/htc/evitareul/firmware/fw_bcm4334_apsta.bin:system/etc/firmware/fw_bcm4334_apsta.bin \
-    device/htc/evitareul/firmware/fw_bcm4334.bin:system/etc/firmware/fw_bcm4334.bin \
-    device/htc/evitareul/firmware/fw_bcm4334_p2p.bin:system/etc/firmware/fw_bcm4334_p2p.bin \
-    device/htc/evitareul/firmware/nvavp_aud_ucode.bin:system/etc/firmware/nvavp_aud_ucode.bin \
-    device/htc/evitareul/firmware/nvavp_os_0ff00000.bin:system/etc/firmware/nvavp_os_0ff00000.bin \
-    device/htc/evitareul/firmware/nvavp_os_eff00000.bin:system/etc/firmware/nvavp_os_eff00000.bin \
-    device/htc/evitareul/firmware/nvavp_vid_ucode_alt.bin:system/etc/firmware/nvavp_vid_ucode_alt.bin \
-    device/htc/evitareul/firmware/nvavp_vid_ucode.bin:system/etc/firmware/nvavp_vid_ucode.bin
-
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
@@ -267,6 +253,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/proprietary/etc/tfa/voice.speaker:system/etc/tfa/voice.speaker
 
 # Prebuilts from the HOX
+# Required for audio to work currently, until a better fix is found
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/proprietary/lib/hw/audio.primary.tegra.so:system/lib/hw/audio.primary.tegra.so \
     $(LOCAL_PATH)/proprietary/lib/hw/audio_policy.tegra.so:system/lib/hw/audio_policy.tegra.so \
