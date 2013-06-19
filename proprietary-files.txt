@@ -23,6 +23,7 @@ bin/tf_daemon
 etc/firmware/fw_bcm4334_apsta.bin
 etc/firmware/fw_bcm4334.bin
 etc/firmware/fw_bcm4334_p2p.bin
+etc/firmware/BCM4334B0_002.001.013.0767.0795.hcd
 etc/firmware/nvavp_aud_ucode.bin
 etc/firmware/nvavp_os_0ff00000.bin
 etc/firmware/nvavp_os_eff00000.bin
