@@ -105,10 +105,6 @@ PRODUCT_PACKAGES += \
 
 # DSP
 PRODUCT_COPY_FILES += \
-    device/htc/evitareul/proprietary/etc/AIC3008_REG_DualMic.csv:system/etc/AIC3008_REG_DualMic.csv \
-    device/htc/evitareul/proprietary/etc/asound.conf:system/etc/asound.conf \
-    device/htc/evitareul/proprietary/etc/audio_effects.conf:system/etc/audio_effects.conf \
-    device/htc/evitareul/proprietary/etc/audio_policy.conf:system/etc/audio_policy.conf \
     device/htc/evitareul/proprietary/etc/soundimage/CodecDSPID.txt:system/etc/soundimage/CodecDSPID.txt \
     device/htc/evitareul/proprietary/etc/soundimage/CodecDSPID_XA.txt:system/etc/soundimage/CodecDSPID_XA.txt \
     device/htc/evitareul/proprietary/etc/soundimage/Sound_AMR_Recording.txt:system/etc/soundimage/Sound_AMR_Recording.txt \
