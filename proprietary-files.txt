@@ -1,6 +1,7 @@
 bin/atpipe_plain
 bin/cand
 bin/DxDrmServerIpc
+bin/efsks
 bin/getnvm.sh
 bin/hdcp_test
 bin/hdmid
@@ -8,6 +9,7 @@ bin/hostapd
 bin/htcbatt
 bin/htc_ebdlogd
 bin/htcfs
+bin/ks
 bin/make_sec_bin
 bin/mknod
 bin/mtpd
