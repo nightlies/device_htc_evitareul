@@ -104,16 +104,15 @@ COMMON_GLOBAL_CFLAGS += -DHTCLOG
 
 # Kernel
 TARGET_PROVIDES_INIT_TARGET_RC := true
-#TARGET_PREBUILT_KERNEL := device/htc/evitareul/prebuilt/kernel
 TARGET_KERNEL_SOURCE := kernel/htc/evitareul
-TARGET_KERNEL_CONFIG := pizza_defconfig
+TARGET_KERNEL_CONFIG := lenrek_defconfig
 
 # NFC
 BOARD_HAVE_NFC := true
 
 # HTC ril compatability
-BOARD_USE_NEW_LIBRIL_HTC := true
-TARGET_PROVIDES_LIBRIL := device/htc/evitareul/proprietary/lib/libril.so
+#BOARD_USE_NEW_LIBRIL_HTC := true
+#TARGET_PROVIDES_LIBRIL := device/htc/evitareul/proprietary/lib/libril.so
 
 # Enable WEBGL in WebKit
 ENABLE_WEBGL := true
