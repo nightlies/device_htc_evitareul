@@ -243,6 +243,18 @@ on post-fs-data
     # won't work.
     # Set indication (checked by vold) that we have finished this action
     #setprop vold.post_fs_data_done 1
+    
+#+SSD_RIL: from Qualcomm socket path
+    mkdir /dev/socket/qmux_radio 0770 radio radio
+    mkdir /dev/socket/qmux_audio 0770 audio audio
+    mkdir /dev/socket/qmux_bluetooth 0770 bluetooth bluetooth
+    mkdir /dev/socket/qmux_gps 0770 gps gps
+#-SSD_RIL: from Qualcomm socket path
+
+#+SSD_AUD: soundhound dump pcm
+    mkdir /data/audio 0775 media audio
+    chmod 2775 /data/audio
+#-SSD_AUD: soundhound dump pcm
 
 on boot
 # basic network init
@@ -360,6 +372,24 @@ on boot
     chown system system /sys/kernel/ipv4/tcp_rmem_def
     chown system system /sys/kernel/ipv4/tcp_rmem_max
     chown root radio /proc/cmdline
+
+# HTC SSD USB
+    chown system system /sys/class/android_usb/f_modem/on
+    chown system system /sys/class/android_usb/f_diag/on
+    chown system system /sys/class/android_usb/f_rmnet/on
+    chown system system /sys/devices/platform/android_usb/usb_disable
+
+#set diag permissions
+    chown radio radio /dev/diag
+    chown radio radio /dev/diag_mdm
+    chown radio radio /dev/htcdiag
+    chown radio radio /dev/diag_arm9
+    chown radio radio /dev/btdiag
+    chmod 0660 /dev/diag
+    chmod 0660 /dev/diag_mdm
+    chmod 0660 /dev/htcdiag
+    chmod 0660 /dev/diag_arm9
+    chmod 0660 /dev/btdiag
 
 # Define TCP buffer sizes for various networks
 #   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
@@ -507,7 +537,7 @@ service init-acmx2 /system/bin/chmod 777 /dev/ttyACMX0
 
 service modem-daemon /system/bin/modemd
 
-service ril-daemon /system/bin/rild
+service ril-daemon /system/bin/rild nand_init rmnet_mode
     class core
     socket rild stream 660 root radio
     socket rild-debug stream 660 radio system
@@ -604,22 +634,3 @@ service userinit /system/xbin/busybox run-parts /system/etc/init.d
     class late_start
     user root
     group root
-
-# Compcache - handle at boot
-service compcache /system/bin/handle_compcache
-    class main
-    user root
-    group root
-    disabled
-    oneshot
-
-on property:persist.service.zram=10
-    start compcache
-
-on property:persist.service.zram=18
-    start compcache
-
-on property:persist.service.zram=26
-    start compcache
-
-

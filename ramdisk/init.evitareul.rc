@@ -17,11 +17,12 @@ on init
     symlink /storage/emulated/legacy /storage/sdcard0
     symlink /mnt/shell/emulated/0 /storage/emulated/legacy
 
-    mkdir /mnt/usb 0000 system system
+    # create directory for mounting usb drives
+    mkdir /mnt/usb 0775 system system
 
 	#Sophia
-	mkdir /firmware 0771 system system
-	mkdir /firmware/mdm 0771 system system
+	mkdir /firmware 0777 system system
+	mkdir /firmware/mdm 0777 system system
 	#Sophia
 
 on fs
@@ -296,11 +297,6 @@ on boot
     chmod 0660 /dev/diag_arm9
     chmod 0660 /dev/btdiag
     
-service pollyd /system/bin/pollyd
-    class main
-    user root
-    group root
-    
 # bugreport is triggered by the VOLUME-DOWN and VOLUME-UP keys/
 service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
     disabled
@@ -328,6 +324,10 @@ service gps-daemon /system/bin/glgps -c /system/etc/gps/gpsconfig.xml
     class main
     user gps
     group system sdcard_rw inet radio sdcard_r
+
+# Start FIL daemon
+#service fil-daemon /system/bin/fild -p /dev/ttyHS0 -s /dev/ttyACM0 -f /dev/ttyACM0 --with-bt3
+#    user radio
 
 service poweron_modem /system/bin/poweron_modem_fls.sh /data/modem_work/
     class main

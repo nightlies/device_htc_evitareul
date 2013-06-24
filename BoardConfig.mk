@@ -90,7 +90,7 @@ WIFI_DRIVER_FW_PATH_P2P     := "/system/etc/firmware/fw_bcm4334_p2p.bin"
 # BT
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/htc/evitareul/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/htc/evitareul/bluetooth
 BOARD_BLUEDROID_VENDOR_CONF := device/htc/evitareul/bluetooth/vnd_evitareul.txt
 
 # USB
@@ -111,8 +111,8 @@ TARGET_KERNEL_CONFIG := lenrek_defconfig
 BOARD_HAVE_NFC := true
 
 # HTC ril compatability
-#BOARD_USE_NEW_LIBRIL_HTC := true
-#TARGET_PROVIDES_LIBRIL := device/htc/evitareul/proprietary/lib/libril.so
+BOARD_USE_NEW_LIBRIL_HTC := true
+TARGET_PROVIDES_LIBRIL := vendor/htc/evitareul/proprietary/lib/libril.so
 
 # Enable WEBGL in WebKit
 ENABLE_WEBGL := true

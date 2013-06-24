@@ -15,10 +15,8 @@
 #
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/proprietary/overlay
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 
 # Ramdisk
@@ -278,9 +276,8 @@ PRODUCT_PACKAGES += \
     sdcard \
     libmtp
 
-
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
-
 $(call inherit-product-if-exists, vendor/htc/evitareul/evitareul-vendor.mk)
+
+$(call inherit-product, device/htc/evitareul/phone-xhdpi-1024-dalvik-heap.mk) ## Needs a specific config for the device to boot - Lloir
