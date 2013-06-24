@@ -537,7 +537,7 @@ service init-acmx2 /system/bin/chmod 777 /dev/ttyACMX0
 
 service modem-daemon /system/bin/modemd
 
-service ril-daemon /system/bin/rild
+service ril-daemon /system/bin/rild nand_init rmnet_mode
     class core
     socket rild stream 660 root radio
     socket rild-debug stream 660 radio system

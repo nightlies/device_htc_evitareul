@@ -275,7 +275,7 @@ on boot
     chmod 755 /data/audio
     chown media audio /data/audio
 
-#wifi
+#wifi This is dirty as hell but it works
     # Load bcmdhd.ko while booting
     insmod /system/lib/modules/bcmdhd.ko
     insmod /system/lib/modules/baseband-xmm-power2.ko
