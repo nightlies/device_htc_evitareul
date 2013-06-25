@@ -168,8 +168,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/proprietary/lib/hw/audio.primary.tegra.so:system/lib/hw/audio.primary.tegra.so \
     $(LOCAL_PATH)/proprietary/lib/hw/audio_policy.tegra.so:system/lib/hw/audio_policy.tegra.so \
-    $(LOCAL_PATH)/proprietary/lib/libasound.so:system/lib/libasound.so
-
 
 PRODUCT_PROPERTY_OVERRIDES += \
         ro.com.google.locationfeatures=1 \
@@ -177,7 +175,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
         dalvik.vm.execution-mode=int:jit \
         dalvik.vm.lockprof.threshold=500 \
         dalvik.vm.dexopt-flags=m=y \
-    persist.sys.usb.config=mtp,adb
+        persist.sys.usb.config=mtp,adb \
+        ro.adb.secure=0
 
 # Tegra 3 spacific overrides
 PRODUCT_PROPERTY_OVERRIDES += \

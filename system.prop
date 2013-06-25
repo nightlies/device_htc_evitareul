@@ -5,50 +5,17 @@
 ro.sf.lcd_density=320
 
 rild.libpath=/system/lib/libril-qc-qmi-1.so
-# RilLibPath for Ganlite by William_Lai
-rild.libpath.ganlite=/system/lib/librilswitch.so
 rilswitch.vendorlibpath=/system/lib/libhtc_ril.so
-rilswitch.ganlibpath=/system/lib/libganril.so
-
+ro.telephony.ril.v3=signalstrength,skipbrokendatacall
 rild.libargs=-e wwan0
 ro.sf.lcd_density=320
 ro.hwui.text_cache_width=2048
 ro.hwui.text_cache_height=256
-
-# Default network type.
-# 0 => WCDMA preferred.
-ro.telephony.default_network=0
-
-# RIL, for ATT feature
-# ro.ril.att.feature=1
-# ro.ril.enable.ucsq=2
-
-# RIL, for BLUE feature
-# ro.ril.ble.feature=1
-
-# For workaround for ro.baseband property. QCT use the property same as radio version to determine the architecture.
-# But we hard code to mdm for DLX.
 ro.baseband.arch = mdm
-
-# RIL, set default prefer network to LTE, GSM/WCDMA
 ro.telephony.default_network=9
-
-wifi.interface=wlan0
-wifi.supplicant_scan_interval=15
-wifi.softap.interface=wlan0
-wifi.softapconcurrent.interface=wl0.1
-
-# RIL, for IMC modem feature
 ro.ril.enable.imc.feature=1
-
 ro.ril.projectname=evitareul
-
-# RIL, parameters for register BLUE stk feature to modem
 ro.ril.stkprof.param=FFFFFFFF7F0000DF9703021F2200000000000000000040100000000000000000
-
-# RIL: enable snapshot
-persist.radio.snapshot_enabled = 1
-persist.radio.snapshot_timer = 22
 
 # Icera fild
 modem.fild.rootdir=/data/rfs
@@ -61,7 +28,7 @@ modem.power.device=/sys/class/gpio/gpio32/value,0,1
 ro.ril.devicename=/dev/ttyACM1
 modem.powercontrol=disabled
 
-
+# Audio
 # -----------------------------
 # speaker volume is from 20 to 31
 # this corresponds to -2dB to +8dB
@@ -92,20 +59,14 @@ audio.headset.voice.2=22
 audio.headset.voice.3=25
 audio.headset.voice.4=28
 audio.headset.voice.5=31
-persist.tegra.nvmmlite = 1
-#export for global effects
+
 htc.audio.global.state=0
 htc.audio.global.profile=0
-#export for SoundHound
 persist.htc.audio.pcm.samplerate=48000
 persist.htc.audio.pcm.channels=2
-#export for HTCAEC
 persist.audio.SupportHTCHWAEC=1
-#export for CS/PS call switch
 persist.audio.AutoSwitchMic=1
-#export for ALT drop 30db due to 9887 boost
-htc.audio.swalt.enable=1
-htc.audio.swalt.mingain=2072
+
 
 #NFC
 debug.nfc.fw_download=true
@@ -144,8 +105,15 @@ service.brcm.bt.i2s_clock_rate=1
 
 # wifi
 wifi.interface=wlan0
+wifi.supplicant_scan_interval=15
+wifi.softap.interface=wlan0
+wifi.softapconcurrent.interface=wl0.1
 
 # UMS
 persist.sys.usb.config=mass_storage,adb
 
 service.htc_ebdlogd.enable=1
+
+persist.tegra.nvmmlite = 1
+
+ro.adb.secure=0
