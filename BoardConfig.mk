@@ -95,7 +95,7 @@ COMMON_GLOBAL_CFLAGS += -DHTCLOG
 # Kernel
 TARGET_PROVIDES_INIT_TARGET_RC := true
 TARGET_KERNEL_SOURCE := kernel/htc/evitareul
-TARGET_KERNEL_CONFIG := lenrek_defconfig
+TARGET_KERNEL_CONFIG := pizza_defconfig
 
 # NFC
 BOARD_HAVE_NFC := true
