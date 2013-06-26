@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# common tegra3 configs
+$(call inherit-product, device/htc/tegra3-common/tegra3.mk)
+
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
