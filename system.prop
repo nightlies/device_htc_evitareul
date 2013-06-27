@@ -1,6 +1,7 @@
 #
 # system.prop for evitareul
 #
+tf.enable=y
 
 ro.sf.lcd_density=320
 
@@ -27,6 +28,9 @@ modem.fild.coredumpdir=/data/rfs/data/debug
 modem.power.device=/sys/class/gpio/gpio32/value,0,1
 ro.ril.devicename=/dev/ttyACM1
 modem.powercontrol=disabled
+
+# RIL, for IMC modem feature
+ro.ril.enable.imc.feature=1
 
 # Audio
 # -----------------------------
@@ -109,11 +113,25 @@ wifi.supplicant_scan_interval=15
 wifi.softap.interface=wlan0
 wifi.softapconcurrent.interface=wl0.1
 
-# UMS
-persist.sys.usb.config=mass_storage,adb
-
 service.htc_ebdlogd.enable=1
+
+## ALL THIS IS TESTING ##
 
 persist.tegra.nvmmlite = 1
 
-ro.adb.secure=0
+# force gpu rendering(2d drawing) [Nvidia setting - libhtc-opt2.so]
+persist.sys.ui.hw=true
+
+# Support HW reset dialog
+ro.product.hwreset = 1
+ro.product.hwreset.timer1 = 5
+ro.product.hwreset.timer2 = 8
+
+#Performance and battery tweaks
+ro.ril.disable.power.collapse=1
+debug.performance.tuning=1
+video.accelerate.hw=1
+debug.sf.hw=1
+persist.sys.ui.hw=true
+ro.media.dec.jpeg.memcap=8000000
+ro.media.enc.jpeg.quality=100

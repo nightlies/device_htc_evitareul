@@ -14,9 +14,6 @@
 # limitations under the License.
 #
 
-# common tegra3 configs
-$(call inherit-product, device/htc/tegra3-common/tegra3.mk)
-
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -166,11 +163,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/proprietary/etc/tfa/voice.preset:system/etc/tfa/voice.preset \
     $(LOCAL_PATH)/proprietary/etc/tfa/voice.speaker:system/etc/tfa/voice.speaker
 
-# Prebuilts from the HOX
-# Required for audio to work currently, until a better fix is found
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/proprietary/lib/hw/audio.primary.tegra.so:system/lib/hw/audio.primary.tegra.so \
-    $(LOCAL_PATH)/proprietary/lib/hw/audio_policy.tegra.so:system/lib/hw/audio_policy.tegra.so \
+    $(LOCAL_PATH)/proprietary/lib/hw/audio.primary.tegra.so:system/lib/hw/audio.primary.tegra.so
 
 PRODUCT_PROPERTY_OVERRIDES += \
         ro.com.google.locationfeatures=1 \
@@ -187,14 +181,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
         ro.vendor.extension_library=/system/lib/libhtc-opt2.so \
         tf.enable=y
 
-# We have enough storage space to hold precise GC data
-PRODUCT_TAGS += dalvik.gc.type-precise
+# Don't store dalvik on /cache, it gets annoying when /cache is wiped
+# by us to enable booting into recovery after flashing boot.img
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.dexopt-data-only=1
 
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-
-PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
-PRODUCT_AAPT_PREF_CONFIG := xhdpi
-PRODUCT_LOCALES += en_GB xhdpi
+# Evitareul is similar to Galaxy Nexus in terms of RAM
+include frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -206,7 +199,7 @@ PODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     hostapd_cli \
-        calibrator
+    calibrator
 
 # video
 PRODUCT_PACKAGES += \
@@ -219,11 +212,7 @@ PRODUCT_PACKAGES += \
 # lights
 PRODUCT_PACKAGES += \
     lights.tegra
-
-# power
-PRODUCT_PACKAGES += \
-    power.tegra
-        
+       
 #NFC
 PRODUCT_PACKAGES += \
     libnfc \
@@ -262,7 +251,8 @@ PRODUCT_PACKAGES += \
 # Misc
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
-    librs_jni 
+    librs_jni \
+    share-logs
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
@@ -281,5 +271,3 @@ PRODUCT_PACKAGES += \
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 $(call inherit-product-if-exists, vendor/htc/evitareul/evitareul-vendor.mk)
-
-$(call inherit-product, device/htc/evitareul/phone-xhdpi-1024-dalvik-heap.mk) ## Needs a specific config for the device to boot - Lloir

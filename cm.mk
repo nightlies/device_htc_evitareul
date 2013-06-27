@@ -6,8 +6,14 @@ PRODUCT_RELEASE_NAME := evitareul
 
 TARGET_BOOTANIMATION_NAME := 720
 
+# Preload bootanimation
+TARGET_BOOTANIMATION_PRELOAD := true
+
+
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
+
+# Enhanced NFC
 $(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
 
 # Inherit device configuration
@@ -20,6 +26,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=evitareul BUILD_FINGERPRINT=cingula
 PRODUCT_DEVICE := evitareul
 PRODUCT_NAME := cm_evitareul
 PRODUCT_BRAND := htc
-PRODUCT_MODEL := One X+
+PRODUCT_MODEL := HTC One X+
 PRODUCT_MANUFACTURER := HTC
 
