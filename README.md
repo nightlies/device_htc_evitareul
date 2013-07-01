@@ -13,9 +13,8 @@ Working:
 * Touch
 * WIFI
 
-Known issues:
-* RIL
-* Bluetooth
+Not working
+incall audio
 
 (thanks for the readme file sportstar)
 
