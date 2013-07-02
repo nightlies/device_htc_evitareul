@@ -28,9 +28,6 @@ bin/rild
 bin/tf_daemon
 etc/agps_rm
 etc/AIC3008_REG_DualMic.csv
-etc/asound.conf
-etc/audio_effects.conf
-etc/audio_policy.conf
 etc/calibration
 etc/calibration.gpio4
 etc/dbus.conf
