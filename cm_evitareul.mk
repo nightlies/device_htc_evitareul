@@ -173,7 +173,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/proprietary/lib/hw/audio_policy.tegra.so:system/lib/hw/audio_policy.tegra.so \
     $(LOCAL_PATH)/proprietary/configs/asound.conf:system/etc/asound.conf \
     $(LOCAL_PATH)/proprietary/configs/audio_effects.conf:system/etc/audio_effects.conf \
-    $(LOCAL_PATH)/proprietary/configs/audio_policy.conf:system/etc/audio_policy.conf
+    $(LOCAL_PATH)/proprietary/configs/audio_policy.conf:system/etc/audio_policy.conf \
+    $(LOCAL_PATH)/proprietary/configs/DSP_number.txt:system/etc/DSP_number.txt
+
 
 
 PRODUCT_PROPERTY_OVERRIDES += \

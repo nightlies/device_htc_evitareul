@@ -31,7 +31,6 @@ etc/AIC3008_REG_DualMic.csv
 etc/calibration
 etc/calibration.gpio4
 etc/dbus.conf
-etc/DSP_number.txt
 etc/gps.conf
 etc/gps.conf_default
 etc/hldm.bin
