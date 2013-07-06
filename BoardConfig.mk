@@ -18,47 +18,9 @@
 # Skip droiddoc build to save build time
 BOARD_SKIP_ANDROID_DOC_BUILD := true
 
-# Audio
-BOARD_USES_GENERIC_AUDIO := false
-BOARD_USES_ALSA_AUDIO := false
-
-#Camera
-USE_CAMERA_STUB := false
-CAMERA_USES_SURFACEFLINGER_CLIENT_STUB := true
-BOARD_HAVE_HTC_FFC := true
-BOARD_CAMERA_HAVE_ISO := true
-COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB 
-COMMON_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
-
-# Board 
-TARGET_BOARD_PLATFORM := tegra
-TARGET_NO_BOOTLOADER := true
-TARGET_CPU_ABI := armeabi-v7a
-TARGET_CPU_ABI2 := armeabi
-TARGET_ARCH := arm
-TARGET_ARCH_VARIANT := armv7-a-neon
-TARGET_ARCH_VARIANT_CPU := cortex-a9
-TARGET_CPU_SMP := true
-ARCH_ARM_HAVE_TLS_REGISTER := true
-ARCH_ARM_HAVE_32_BYTE_CACHE_LINES := true
-ARCH_ARM_USE_NON_NEON_MEMCPY := true
-
 # Optimization build flags
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
-
-# Board nameing
-TARGET_NO_RADIOIMAGE := true
-TARGET_BOOTLOADER_BOARD_NAME := 
-TARGET_BOARD_PLATFORM := tegra
-
-# Enable WEBGL in WebKit
-ENABLE_WEBGL := true
-
-# EGL settings
-USE_OPENGL_RENDERER := true
-BOARD_EGL_NEEDS_LEGACY_FB := true
-BOARD_EGL_CFG := device/htc/evitareul/configs/egl.cfg
 
 # Graphics - Skia
 BOARD_USE_SKIA_LCDTEXT := true
@@ -78,8 +40,6 @@ WIFI_DRIVER_FW_PATH_P2P     := "/system/etc/firmware/fw_bcm4334_p2p.bin"
 
 
 # BT
-BOARD_HAVE_BLUETOOTH := true
-BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/htc/evitareul/bluetooth
 BOARD_BLUEDROID_VENDOR_CONF := device/htc/evitareul/bluetooth/vnd_evitareul.txt
 
@@ -89,23 +49,13 @@ BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_MAX_PARTITIONS := 22
 BOARD_HAS_SDCARD_INTERNAL := true
 
-# HTCLOG
-COMMON_GLOBAL_CFLAGS += -DHTCLOG
-
 # Kernel
 TARGET_PROVIDES_INIT_TARGET_RC := true
 TARGET_KERNEL_SOURCE := kernel/htc/evitareul
 TARGET_KERNEL_CONFIG := pizza_defconfig
 
-# NFC
-BOARD_HAVE_NFC := true
-
 # HTC ril compatability
-BOARD_USE_NEW_LIBRIL_HTC := true
 TARGET_PROVIDES_LIBRIL := vendor/htc/evitareul/proprietary/lib/libril.so
-
-# Enable WEBGL in WebKit
-ENABLE_WEBGL := true
 
 # Partition Info
 #dev:        size     erasesize name
