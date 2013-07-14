@@ -103,7 +103,7 @@ on boot
 	
 	chown system system /sys/class/android_usb/android0/f_rndis/ethaddr
     chmod 0660 /sys/class/android_usb/android0/f_rndis/ethaddr
-    
+
 # Load modules while booting 
     insmod /system/lib/modules/bcmdhd.ko
     #insmod /lib/modules/baseband-xmm-power2.ko
