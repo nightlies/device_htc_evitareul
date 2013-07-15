@@ -60,6 +60,11 @@ etc/firmware/nvavp_vid_ucode.bin
 etc/nfcee_access.xml
 etc/uilock.yuv
 etc/voicemail-conf.xml
+lib/libCommandSvc.so
+lib/libconfigdb.so
+lib/libcorkscrew.so
+lib/libcsd-client.so
+lib/libdm-radioaccess.so
 lib/egl/egl.cfg
 lib/egl/libEGL_perfhud.so
 lib/egl/libEGL_tegra_impl.so
