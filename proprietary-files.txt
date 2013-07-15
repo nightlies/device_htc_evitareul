@@ -27,7 +27,6 @@ bin/qmuxd
 bin/rild
 bin/tf_daemon
 etc/agps_rm
-etc/AIC3008_REG_DualMic.csv
 etc/calibration
 etc/calibration.gpio4
 etc/dbus.conf
@@ -36,8 +35,6 @@ etc/gps.conf_default
 etc/hldm.bin
 etc/hltof.bin
 etc/hltrd.bin
-etc/media_codecs.xml
-etc/media_profiles.xml
 etc/nfcee_access.xml
 etc/voicemail-conf.xml
 etc/bluetooth/a2dp_avrcp.conf
@@ -65,7 +62,6 @@ lib/libconfigdb.so
 lib/libcorkscrew.so
 lib/libcsd-client.so
 lib/libdm-radioaccess.so
-lib/egl/egl.cfg
 lib/egl/libEGL_perfhud.so
 lib/egl/libEGL_tegra_impl.so
 lib/egl/libEGL_tegra.so
@@ -78,8 +74,6 @@ lib/egl/libGLESv2_tegra_impl.so
 lib/egl/libGLESv2_tegra.so
 lib/hw/audio.a2dp.default.so
 lib/hw/audio.primary.default.so
-lib/hw/audio_policy.default.so
-lib/hw/audio_policy.tegra.so
 lib/hw/camera.tegra.so
 lib/hw/gralloc.default.so
 lib/hw/gralloc.tegra.so

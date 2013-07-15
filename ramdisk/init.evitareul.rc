@@ -19,6 +19,10 @@ on init
 
     # create directory for mounting usb drives
     mkdir /mnt/usb 0775 system system
+    
+    # create directories for ril
+    mkdir /sys/module/f_rmnet/parameters 0777 system system
+    mkdir /sys/module/rmnet/parameters 0777 system system 
 
 	#Sophia
 	mkdir /firmware 0777 system system
