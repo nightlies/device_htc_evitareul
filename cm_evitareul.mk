@@ -35,46 +35,46 @@ PRODUCT_COPY_FILES += \
 
 # DSP
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/CodecDSPID.txt:system/etc/soundimage/CodecDSPID.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/CodecDSPID_XA.txt:system/etc/soundimage/CodecDSPID_XA.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_AMR_Recording.txt:system/etc/soundimage/Sound_AMR_Recording.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_BT_CarMode.txt:system/etc/soundimage/Sound_BT_CarMode.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_FM_HP.txt:system/etc/soundimage/Sound_FM_HP.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_FM_SPK.txt:system/etc/soundimage/Sound_FM_SPK.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_Note_Recording.txt:system/etc/soundimage/Sound_Note_Recording.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_Original.txt:system/etc/soundimage/Sound_Original.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_Original_DOCK.txt:system/etc/soundimage/Sound_Original_DOCK.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_Original_HP.txt:system/etc/soundimage/Sound_Original_HP.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_Original_Recording.txt:system/etc/soundimage/Sound_Original_Recording.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_Original_SPK.txt:system/etc/soundimage/Sound_Original_SPK.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_Original_SPK_RING.txt:system/etc/soundimage/Sound_Original_SPK_RING.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_Original_SPK_XA.txt:system/etc/soundimage/Sound_Original_SPK_XA.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_Original_monocamcorder.txt:system/etc/soundimage/Sound_Original_monocamcorder.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_Phone_Original_BT.txt:system/etc/soundimage/Sound_Phone_Original_BT.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_Phone_Original_DOCK.txt:system/etc/soundimage/Sound_Phone_Original_DOCK.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_Phone_Original_HP.txt:system/etc/soundimage/Sound_Phone_Original_HP.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_Phone_Original_HPST.txt:system/etc/soundimage/Sound_Phone_Original_HPST.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_Phone_Original_REC.txt:system/etc/soundimage/Sound_Phone_Original_REC.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_Phone_Original_SPK.txt:system/etc/soundimage/Sound_Phone_Original_SPK.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_Rec_Landscape.txt:system/etc/soundimage/Sound_Rec_Landscape.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_Rec_Portrait.txt:system/etc/soundimage/Sound_Rec_Portrait.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_SpeakerVR_Recording.txt:system/etc/soundimage/Sound_SpeakerVR_Recording.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_Voice_Recording_AMR.txt:system/etc/soundimage/Sound_Voice_Recording_AMR.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_Voip_Original_BT.txt:system/etc/soundimage/Sound_Voip_Original_BT.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_Voip_Original_BT_AEC.txt:system/etc/soundimage/Sound_Voip_Original_BT_AEC.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_Voip_Original_HP.txt:system/etc/soundimage/Sound_Voip_Original_HP.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_Voip_Original_HP_AEC.txt:system/etc/soundimage/Sound_Voip_Original_HP_AEC.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_Voip_Original_REC.txt:system/etc/soundimage/Sound_Voip_Original_REC.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_Voip_Original_REC_AEC.txt:system/etc/soundimage/Sound_Voip_Original_REC_AEC.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_Voip_Original_SPK.txt:system/etc/soundimage/Sound_Voip_Original_SPK.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/Sound_Voip_Original_SPK_AEC.txt:system/etc/soundimage/Sound_Voip_Original_SPK_AEC.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/board_version.txt:system/etc/soundimage/board_version.txt \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/srs_geq10.cfg:system/etc/soundimage/srs_geq10.cfg \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/srs_global.cfg:system/etc/soundimage/srs_global.cfg \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/srsfx_trumedia_51.cfg:system/etc/soundimage/srsfx_trumedia_51.cfg \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/srsfx_trumedia_movie.cfg:system/etc/soundimage/srsfx_trumedia_movie.cfg \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/srsfx_trumedia_music.cfg:system/etc/soundimage/srsfx_trumedia_music.cfg \
-    $(LOCAL_PATH)/proprietary/etc/soundimage/srsfx_trumedia_voice.cfg:system/etc/soundimage/srsfx_trumedia_voice.cfg
+    $(LOCAL_PATH)/configs/soundimage/CodecDSPID.txt:system/etc/soundimage/CodecDSPID.txt \
+    $(LOCAL_PATH)/configs/soundimage/CodecDSPID_XA.txt:system/etc/soundimage/CodecDSPID_XA.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_AMR_Recording.txt:system/etc/soundimage/Sound_AMR_Recording.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_BT_CarMode.txt:system/etc/soundimage/Sound_BT_CarMode.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_FM_HP.txt:system/etc/soundimage/Sound_FM_HP.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_FM_SPK.txt:system/etc/soundimage/Sound_FM_SPK.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_Note_Recording.txt:system/etc/soundimage/Sound_Note_Recording.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_Original.txt:system/etc/soundimage/Sound_Original.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_Original_DOCK.txt:system/etc/soundimage/Sound_Original_DOCK.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_Original_HP.txt:system/etc/soundimage/Sound_Original_HP.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_Original_Recording.txt:system/etc/soundimage/Sound_Original_Recording.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_Original_SPK.txt:system/etc/soundimage/Sound_Original_SPK.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_Original_SPK_RING.txt:system/etc/soundimage/Sound_Original_SPK_RING.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_Original_SPK_XA.txt:system/etc/soundimage/Sound_Original_SPK_XA.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_Original_monocamcorder.txt:system/etc/soundimage/Sound_Original_monocamcorder.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_Phone_Original_BT.txt:system/etc/soundimage/Sound_Phone_Original_BT.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_Phone_Original_DOCK.txt:system/etc/soundimage/Sound_Phone_Original_DOCK.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_Phone_Original_HP.txt:system/etc/soundimage/Sound_Phone_Original_HP.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_Phone_Original_HPST.txt:system/etc/soundimage/Sound_Phone_Original_HPST.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_Phone_Original_REC.txt:system/etc/soundimage/Sound_Phone_Original_REC.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_Phone_Original_SPK.txt:system/etc/soundimage/Sound_Phone_Original_SPK.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_Rec_Landscape.txt:system/etc/soundimage/Sound_Rec_Landscape.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_Rec_Portrait.txt:system/etc/soundimage/Sound_Rec_Portrait.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_SpeakerVR_Recording.txt:system/etc/soundimage/Sound_SpeakerVR_Recording.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_Voice_Recording_AMR.txt:system/etc/soundimage/Sound_Voice_Recording_AMR.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_Voip_Original_BT.txt:system/etc/soundimage/Sound_Voip_Original_BT.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_Voip_Original_BT_AEC.txt:system/etc/soundimage/Sound_Voip_Original_BT_AEC.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_Voip_Original_HP.txt:system/etc/soundimage/Sound_Voip_Original_HP.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_Voip_Original_HP_AEC.txt:system/etc/soundimage/Sound_Voip_Original_HP_AEC.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_Voip_Original_REC.txt:system/etc/soundimage/Sound_Voip_Original_REC.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_Voip_Original_REC_AEC.txt:system/etc/soundimage/Sound_Voip_Original_REC_AEC.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_Voip_Original_SPK.txt:system/etc/soundimage/Sound_Voip_Original_SPK.txt \
+    $(LOCAL_PATH)/configs/soundimage/Sound_Voip_Original_SPK_AEC.txt:system/etc/soundimage/Sound_Voip_Original_SPK_AEC.txt \
+    $(LOCAL_PATH)/configs/soundimage/board_version.txt:system/etc/soundimage/board_version.txt \
+    $(LOCAL_PATH)/configs/soundimage/srs_geq10.cfg:system/etc/soundimage/srs_geq10.cfg \
+    $(LOCAL_PATH)/configs/soundimage/srs_global.cfg:system/etc/soundimage/srs_global.cfg \
+    $(LOCAL_PATH)/configs/soundimage/srsfx_trumedia_51.cfg:system/etc/soundimage/srsfx_trumedia_51.cfg \
+    $(LOCAL_PATH)/configs/soundimage/srsfx_trumedia_movie.cfg:system/etc/soundimage/srsfx_trumedia_movie.cfg \
+    $(LOCAL_PATH)/configs/soundimage/srsfx_trumedia_music.cfg:system/etc/soundimage/srsfx_trumedia_music.cfg \
+    $(LOCAL_PATH)/configs/soundimage/srsfx_trumedia_voice.cfg:system/etc/soundimage/srsfx_trumedia_voice.cfg
   
 
 # Vold
@@ -116,35 +116,35 @@ PRODUCT_COPY_FILES += \
 
 # AUDIO TFA
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/proprietary/etc/tfa/fm.config:system/etc/tfa/fm.config \
-    $(LOCAL_PATH)/proprietary/etc/tfa/fm.eq:system/etc/tfa/fm.eq \
-    $(LOCAL_PATH)/proprietary/etc/tfa/fm.preset:system/etc/tfa/fm.preset \
-    $(LOCAL_PATH)/proprietary/etc/tfa/fm.speaker:system/etc/tfa/fm.speaker \
-    $(LOCAL_PATH)/proprietary/etc/tfa/playback.config:system/etc/tfa/playback.config \
-    $(LOCAL_PATH)/proprietary/etc/tfa/playback.eq:system/etc/tfa/playback.eq \
-    $(LOCAL_PATH)/proprietary/etc/tfa/playback.preset:system/etc/tfa/playback.preset \
-    $(LOCAL_PATH)/proprietary/etc/tfa/playback.speaker:system/etc/tfa/playback.speaker \
-    $(LOCAL_PATH)/proprietary/etc/tfa/recorder.config:system/etc/tfa/recorder.config \
-    $(LOCAL_PATH)/proprietary/etc/tfa/recorder.eq:system/etc/tfa/recorder.eq \
-    $(LOCAL_PATH)/proprietary/etc/tfa/recorder.preset:system/etc/tfa/recorder.preset \
-    $(LOCAL_PATH)/proprietary/etc/tfa/recorder.speaker:system/etc/tfa/recorder.speaker \
-    $(LOCAL_PATH)/proprietary/etc/tfa/ReleaseNote.txt:system/etc/tfa/ReleaseNote.txt \
-    $(LOCAL_PATH)/proprietary/etc/tfa/ring.config:system/etc/tfa/ring.config \
-    $(LOCAL_PATH)/proprietary/etc/tfa/ring.eq:system/etc/tfa/ring.eq \
-    $(LOCAL_PATH)/proprietary/etc/tfa/ring.preset:system/etc/tfa/ring.preset \
-    $(LOCAL_PATH)/proprietary/etc/tfa/ring.speaker:system/etc/tfa/ring.speaker \
-    $(LOCAL_PATH)/proprietary/etc/tfa/tcoef.speaker:system/etc/tfa/tcoef.speaker \
-    $(LOCAL_PATH)/proprietary/etc/tfa/tfa9887.config:system/etc/tfa/tfa9887.config \
-    $(LOCAL_PATH)/proprietary/etc/tfa/tfa9887.patch:system/etc/tfa/tfa9887.patch \
-    $(LOCAL_PATH)/proprietary/etc/tfa/tfa9887.speaker:system/etc/tfa/tfa9887.speaker \
-    $(LOCAL_PATH)/proprietary/etc/tfa/video.config:system/etc/tfa/video.config \
-    $(LOCAL_PATH)/proprietary/etc/tfa/video.eq:system/etc/tfa/video.eq \
-    $(LOCAL_PATH)/proprietary/etc/tfa/video.preset:system/etc/tfa/video.preset \
-    $(LOCAL_PATH)/proprietary/etc/tfa/video.speaker:system/etc/tfa/video.speaker \
-    $(LOCAL_PATH)/proprietary/etc/tfa/voice.config:system/etc/tfa/voice.config \
-    $(LOCAL_PATH)/proprietary/etc/tfa/voice.eq:system/etc/tfa/voice.eq \
-    $(LOCAL_PATH)/proprietary/etc/tfa/voice.preset:system/etc/tfa/voice.preset \
-    $(LOCAL_PATH)/proprietary/etc/tfa/voice.speaker:system/etc/tfa/voice.speaker
+    $(LOCAL_PATH)/configs/tfa/fm.config:system/etc/tfa/fm.config \
+    $(LOCAL_PATH)/configs/tfa/fm.eq:system/etc/tfa/fm.eq \
+    $(LOCAL_PATH)/configs/tfa/fm.preset:system/etc/tfa/fm.preset \
+    $(LOCAL_PATH)/configs/tfa/fm.speaker:system/etc/tfa/fm.speaker \
+    $(LOCAL_PATH)/configs/tfa/playback.config:system/etc/tfa/playback.config \
+    $(LOCAL_PATH)/configs/tfa/playback.eq:system/etc/tfa/playback.eq \
+    $(LOCAL_PATH)/configs/tfa/playback.preset:system/etc/tfa/playback.preset \
+    $(LOCAL_PATH)/configs/tfa/playback.speaker:system/etc/tfa/playback.speaker \
+    $(LOCAL_PATH)/configs/tfa/recorder.config:system/etc/tfa/recorder.config \
+    $(LOCAL_PATH)/configs/tfa/recorder.eq:system/etc/tfa/recorder.eq \
+    $(LOCAL_PATH)/configs/tfa/recorder.preset:system/etc/tfa/recorder.preset \
+    $(LOCAL_PATH)/configs/tfa/recorder.speaker:system/etc/tfa/recorder.speaker \
+    $(LOCAL_PATH)/configs/tfa/ReleaseNote.txt:system/etc/tfa/ReleaseNote.txt \
+    $(LOCAL_PATH)/configs/tfa/ring.config:system/etc/tfa/ring.config \
+    $(LOCAL_PATH)/configs/tfa/ring.eq:system/etc/tfa/ring.eq \
+    $(LOCAL_PATH)/configs/tfa/ring.preset:system/etc/tfa/ring.preset \
+    $(LOCAL_PATH)/configs/tfa/ring.speaker:system/etc/tfa/ring.speaker \
+    $(LOCAL_PATH)/configs/tfa/tcoef.speaker:system/etc/tfa/tcoef.speaker \
+    $(LOCAL_PATH)/configs/tfa/tfa9887.config:system/etc/tfa/tfa9887.config \
+    $(LOCAL_PATH)/configs/tfa/tfa9887.patch:system/etc/tfa/tfa9887.patch \
+    $(LOCAL_PATH)/configs/tfa/tfa9887.speaker:system/etc/tfa/tfa9887.speaker \
+    $(LOCAL_PATH)/configs/tfa/video.config:system/etc/tfa/video.config \
+    $(LOCAL_PATH)/configs/tfa/video.eq:system/etc/tfa/video.eq \
+    $(LOCAL_PATH)/configs/tfa/video.preset:system/etc/tfa/video.preset \
+    $(LOCAL_PATH)/configs/tfa/video.speaker:system/etc/tfa/video.speaker \
+    $(LOCAL_PATH)/configs/tfa/voice.config:system/etc/tfa/voice.config \
+    $(LOCAL_PATH)/configs/tfa/voice.eq:system/etc/tfa/voice.eq \
+    $(LOCAL_PATH)/configs/tfa/voice.preset:system/etc/tfa/voice.preset \
+    $(LOCAL_PATH)/configs/tfa/voice.speaker:system/etc/tfa/voice.speaker
 
 # Prebuilts from the HOX
 # Required for audio to work currently, until a better fix is found
