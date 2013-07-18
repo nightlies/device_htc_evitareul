@@ -116,7 +116,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/libaudioavp.so:system/lib/libaudioavp.so \
     $(LOCAL_PATH)/configs/libcall_volume.so:system/lib/libcall_volume.so \
     $(LOCAL_PATH)/configs/libtinyalsa.so:system/lib/libtinyalsa.so \
-    $(LOCAL_PATH)/configs/libasound.so:system/lib/libasound.so 
+    $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
+    $(LOCAL_PATH)/configs/libasound.so:system/lib/libasound.so  \
+    $(LOCAL_PATH)/configs/DSP_number.txt:system/etc/DSP_number.txt
+
 
 # Vold
 PRODUCT_COPY_FILES += \
@@ -154,17 +157,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/proprietary/usr/share/alsa/pcm/surround50.conf:system/usr/share/alsa/pcm/surround50.conf \
     $(LOCAL_PATH)/proprietary/usr/share/alsa/pcm/surround51.conf:system/usr/share/alsa/pcm/surround51.conf \
     $(LOCAL_PATH)/proprietary/usr/share/alsa/pcm/surround71.conf:system/usr/share/alsa/pcm/surround71.conf
-
-# Prebuilts from the HOX
-# Required for audio to work currently, until a better fix is found
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/proprietary/lib/hw/audio.primary.tegra.so:system/lib/hw/audio.primary.tegra.so \
-    $(LOCAL_PATH)/proprietary/lib/hw/audio_policy.tegra.so:system/lib/hw/audio_policy.tegra.so \
-    $(LOCAL_PATH)/configs/asound.conf:system/etc/asound.conf \
-    $(LOCAL_PATH)/configs/audio_effects.conf:system/etc/audio_effects.conf \
-    $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/configs/DSP_number.txt:system/etc/DSP_number.txt
-
 
 # USB
 PODUCT_PACKAGES += \

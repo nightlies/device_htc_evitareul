@@ -1,6 +1,8 @@
 #
 # system.prop for evitareul
 #
+ro.opengles.version = 131072
+#
 
 ro.sf.lcd_density=320
 
@@ -66,6 +68,8 @@ persist.htc.audio.pcm.samplerate=48000
 persist.htc.audio.pcm.channels=2
 persist.audio.SupportHTCHWAEC=1
 persist.audio.AutoSwitchMic=1
+media.tegra.max.out.channels=2
+media.tegra.out.channel.map=1
 
 persist.data.netmgrd.qos.enable=1
 
@@ -116,5 +120,3 @@ persist.sys.usb.config=mass_storage,adb
 service.htc_ebdlogd.enable=1
 
 persist.tegra.nvmmlite = 1
-
-ro.adb.secure=0
