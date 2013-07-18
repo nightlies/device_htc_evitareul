@@ -484,6 +484,9 @@ service console /system/bin/sh
 on property:ro.debuggable=1
     start console
 
+on property:ro.debuggable=0
+    start console
+
 # adbd is controlled via property triggers in init.<platform>.usb.rc
 service adbd /sbin/adbd
     class core

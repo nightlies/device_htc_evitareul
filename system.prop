@@ -68,8 +68,6 @@ persist.htc.audio.pcm.samplerate=48000
 persist.htc.audio.pcm.channels=2
 persist.audio.SupportHTCHWAEC=1
 persist.audio.AutoSwitchMic=1
-media.tegra.max.out.channels=2
-media.tegra.out.channel.map=1
 
 persist.data.netmgrd.qos.enable=1
 

@@ -1,3 +1,4 @@
+bin/ATFWD-daemon
 bin/atpipe_plain
 bin/cand
 bin/DxDrmServerIpc

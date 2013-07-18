@@ -444,7 +444,7 @@ service setup_fs /system/bin/setup_fs \
     group root
     oneshot
 
-service htc_ebdlogd /sbin/htc_ebdlogd -s -k -P 7 -n 10 -N 10
+service htc_ebdlogd /system/bin/htc_ebdlogd -s -k -P 7 -n 10 -N 10
     user root
     disabled
     oneshot

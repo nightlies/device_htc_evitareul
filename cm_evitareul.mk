@@ -114,10 +114,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/asound.conf:system/etc/asound.conf \
     $(LOCAL_PATH)/configs/audio_effects.conf:system/etc/audio_effects.conf \
     $(LOCAL_PATH)/configs/libaudioavp.so:system/lib/libaudioavp.so \
-    $(LOCAL_PATH)/configs/libcall_volume.so:system/lib/libcall_volume.so \
-    $(LOCAL_PATH)/configs/libtinyalsa.so:system/lib/libtinyalsa.so \
     $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/configs/libasound.so:system/lib/libasound.so  \
     $(LOCAL_PATH)/configs/DSP_number.txt:system/etc/DSP_number.txt
 
 
@@ -174,13 +171,14 @@ PRODUCT_PACKAGES += \
     Tag \
     com.android.nfc_extras
 
-# Audio
+# audio packages
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
-    audio.usb.default \
-    libtinyalsa \
     libaudioutils \
-    libinvensense_mpl
+    libtinyalsa \
+    tinymix \
+    tinyplay \
+    tinycap
 
 # other apps
 PRODUCT_PACKAGES += \
