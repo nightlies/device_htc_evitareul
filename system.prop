@@ -106,14 +106,20 @@ service.brcm.bt.i2s_is_master=0
 service.brcm.bt.i2s_sample_rate=0
 service.brcm.bt.i2s_clock_rate=1
 
+#solomon56 - testing force adb
+ro.debuggable=1
+persist.sys.usb.config=mtp,adb
+ro.adb.secure=0
+
 # wifi
 wifi.interface=wlan0
 wifi.supplicant_scan_interval=15
 wifi.softap.interface=wlan0
 wifi.softapconcurrent.interface=wl0.1
 
+#solomon56 - commenting this out potential conflict with force adb
 # UMS
-persist.sys.usb.config=mass_storage,adb
+# persist.sys.usb.config=mass_storage,adb
 
 service.htc_ebdlogd.enable=1
 
