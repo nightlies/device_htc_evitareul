@@ -32,7 +32,6 @@ PRODUCT_COPY_FILES += \
 
 # DSP
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/soundimage/CodecDSPID.txt:system/etc/soundimage/CodecDSPID.txt \
     $(LOCAL_PATH)/configs/soundimage/CodecDSPID_XA.txt:system/etc/soundimage/CodecDSPID_XA.txt \
     $(LOCAL_PATH)/configs/soundimage/Sound_AMR_Recording.txt:system/etc/soundimage/Sound_AMR_Recording.txt \
     $(LOCAL_PATH)/configs/soundimage/Sound_BT_CarMode.txt:system/etc/soundimage/Sound_BT_CarMode.txt \
